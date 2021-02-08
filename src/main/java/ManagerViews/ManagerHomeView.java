@@ -1,15 +1,11 @@
 package ManagerViews;
 
+import ClientView.ClientFindingManagerView;
 import ComputerView.AllComputerView;
-import ComputerView.ComputerFindingView;
-import ComputerView.ComputerStockRegistrationView;
 import CartelView.CartelCounts;
 import AdministratorViews.AllClientView;
-import ClientView.ClientFindingView;
-import AdministratorViews.ClientSignUpView;
 import ComputerManagementFunctionFactory.*;
 import EmployeesView.AllUsersView;
-import EmployeesView.FindEmployeeView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -65,7 +61,7 @@ public class ManagerHomeView {
         getAllUserTable.setId("findComputer-button");
         getAllUserTable.setStyle("-fx-background-color:#01FFFF;");
         getAllUserTable.setOnAction(event -> {
-            AllUsersView av= new AllUsersView(currentUser);
+            AllUsersManagerView av= new AllUsersManagerView(currentUser);
             Scene scene= av.showView(stage);
             stage.setScene(scene);
         });
@@ -75,7 +71,7 @@ public class ManagerHomeView {
         getAllClientTable.setId("getAllClientTable-button");
         getAllClientTable.setStyle("-fx-background-color:#01FFFF;");
         getAllClientTable.setOnAction(event -> {
-            AllClientView av= new AllClientView(currentUser);
+            AllClientManagerView av= new AllClientManagerView(currentUser);
             Scene scene= av.showView(stage);
             stage.setScene(scene);
         });
@@ -102,7 +98,7 @@ public class ManagerHomeView {
         getAllComputerTable.setId("getAllComputerTable-button");
         getAllComputerTable.setStyle("-fx-background-color:#01FFFF;");
         getAllComputerTable.setOnAction(event -> {
-            AllComputerView av= new AllComputerView(currentUser);
+            AllComputerManagerView av= new AllComputerManagerView(currentUser);
             Scene scene= av.showView(stage);
             stage.setScene(scene);
         });
@@ -140,7 +136,7 @@ public class ManagerHomeView {
         findComputer.setId("findComputer-button");
         findComputer.setStyle("-fx-background-color:#01FFFF;");
         findComputer.setOnAction(e->{
-            stage.setScene(new ComputerFindingView().execute(stage));
+            stage.setScene(new ComputerFindingManagerView().execute(stage));
         });
 
         MenuItem findEmployee = new MenuItem("-Find Employee-");
@@ -148,7 +144,7 @@ public class ManagerHomeView {
         findEmployee.setId("findComputer-button");
         findEmployee.setStyle("-fx-background-color:#01FFFF;");
         findEmployee.setOnAction(e->{
-            stage.setScene(new FindEmployeeView().execute(stage));
+            stage.setScene(new FindEmployeeManagerView().execute(stage));
         });
 
         findBookOrClient.getItems().addAll(findComputer, findEmployee);
@@ -159,7 +155,7 @@ public class ManagerHomeView {
         findClients.setId("findClients-button");
         findClients.setStyle("-fx-background-color:#01FFFF;");
         findClients.setOnAction(e->{
-            stage.setScene(new ClientFindingView().execute(stage));
+            stage.setScene(new ClientFindingManagerView().execute(stage));
         });
 
         findBookOrClient.getItems().addAll(findClients);
@@ -174,28 +170,28 @@ public class ManagerHomeView {
 
         });
 
-        MenuItem createClientButton = new MenuItem("-Create Client Button-");
-        createClientButton.setOnAction(e->{
-            stage.setScene(new ClientSignUpView().execute(stage));
-        });
-
-        MenuItem createComputerButton = new MenuItem("-Create Computer Button-");
-        createComputerButton.setOnAction(e->{
-            stage.setScene(new ComputerStockRegistrationView().execute(stage));
-        });
+//        MenuItem createClientButton = new MenuItem("-Create Client Button-");
+//        createClientButton.setOnAction(e->{
+//            stage.setScene(new ClientSignUpView().execute(stage));
+//        });
+//
+//        MenuItem createComputerButton = new MenuItem("-Create Computer Button-");
+//        createComputerButton.setOnAction(e->{
+//            stage.setScene(new ComputerStockRegistrationManagerView().execute(stage));
+//        });
 
         MenuItem findCartelsByEmployees = new MenuItem("-Find Sells By One Employee-");
         findCartelsByEmployees.setStyle("-fx-font-weight: bold;");
         findCartelsByEmployees.setId("findClients-button");
         findCartelsByEmployees.setStyle("-fx-background-color:#01FFFF;");
         findCartelsByEmployees.setOnAction(e->{
-            stage.setScene(new CartelCounts().execute(stage));
+            stage.setScene(new ManagerCartelCounts().execute(stage));
         });
 
         countOptions.getItems().addAll(findCartelsByEmployees);
         mainPane.setTop(menuBar);
 
-        createMenu.getItems().addAll(getVerificationStatus, createClientButton, createComputerButton);
+        createMenu.getItems().addAll(getVerificationStatus);
 
         menuBar.getMenus().add(createMenu);
         menuBar.getMenus().add(findBookOrClient);

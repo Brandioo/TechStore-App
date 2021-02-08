@@ -12,8 +12,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.Computers;
 import model.Employee;
 import views.SecondView;
+
+import java.awt.print.Book;
 
 public class ManagerLoginView {
     public Scene showView(Stage stage) {
@@ -57,7 +60,7 @@ public class ManagerLoginView {
                 EmployeeFactory uc = new EmployeeFactory();
                 Employee loggedIn = uc.logIn(user, password);
 
-
+                Computers currentComputer = null;
                 System.out.println("Views.User: " + loggedIn);
                 if (loggedIn==null) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -68,6 +71,18 @@ public class ManagerLoginView {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The user was logged in successfully");
                     successAlert.setContentText("Welcome "+loggedIn.getFirstName()+"!");
+//                    HomeView homeView=new HomeView(loggedIn);
+//                    stage.setScene(homeView.execute(stage));
+                    successAlert.showAndWait();
+                    stage.setScene(new ManagerHomeView(loggedIn).execute(stage));
+                    successAlert.close();
+                }else if(loggedIn.getRole().equals("Manager")&&currentComputer.getQuantity()<=5) {
+                    Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                    successAlert.setHeaderText("The user was logged in successfully");
+                    successAlert.setContentText("Welcome "+loggedIn.getFirstName()+"!"+"\n"+
+                            "Time to buy new Computers!"+"\n"+
+                            currentComputer.getComputerName()+" is out of stock with Quantity: "+currentComputer.getQuantity());
+
 //                    HomeView homeView=new HomeView(loggedIn);
 //                    stage.setScene(homeView.execute(stage));
                     successAlert.showAndWait();

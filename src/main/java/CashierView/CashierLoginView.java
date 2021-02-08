@@ -72,7 +72,7 @@ public class CashierLoginView {
 //                    HomeView homeView=new HomeView(loggedIn);
 //                    stage.setScene(homeView.execute(stage));
                     successAlert.showAndWait();
-                    stage.setScene(new AdministratorHomeView(loggedIn).execute(stage));
+                    stage.setScene(new CashierHomeView(loggedIn).execute(stage));
                     successAlert.close();
                 }else {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
