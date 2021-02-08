@@ -1,5 +1,7 @@
 package AdministratorViews;
 
+import CartelRecordView.AllCartelRecordView;
+import CartelView.AllCartelView;
 import ComputerView.AllComputerView;
 import ComputerView.ComputerFindingView;
 import ComputerView.ComputerStockRegistrationView;
@@ -37,6 +39,8 @@ public class AdministratorHomeView {
         createMenu.setStyle("-fx-font-weight: bold;");
         Menu findBookOrClient = new Menu("Find-Options");
         findBookOrClient.setStyle("-fx-font-weight: bold;");
+        Menu countOptions = new Menu("Count-Options");
+        countOptions.setStyle("-fx-font-weight: bold;");
 
         GridPane root1 = new GridPane();
         root1.setAlignment(Pos.CENTER);
@@ -77,8 +81,8 @@ public class AdministratorHomeView {
         getAllUserTable.setId("findComputer-button");
         getAllUserTable.setStyle("-fx-background-color:#01FFFF;");
         getAllUserTable.setOnAction(event -> {
-            AllUsersView av= new AllUsersView(currentUser);
-            Scene scene= av.showView(stage);
+            AllUsersView av = new AllUsersView(currentUser);
+            Scene scene = av.showView(stage);
             stage.setScene(scene);
         });
 
@@ -104,11 +108,50 @@ public class AdministratorHomeView {
         getAllClientTable.setId("getAllClientTable-button");
         getAllClientTable.setStyle("-fx-background-color:#01FFFF;");
         getAllClientTable.setOnAction(event -> {
-            AllClientView av= new AllClientView(currentUser);
-            Scene scene= av.showView(stage);
+            AllClientView av = new AllClientView(currentUser);
+            Scene scene = av.showView(stage);
             stage.setScene(scene);
         });
 
+        MenuItem getAllComputerTable = new MenuItem("-Get All Computers Table-");
+        getAllComputerTable.setStyle("-fx-font-weight: bold;");
+        getAllComputerTable.setId("getAllComputerTable-button");
+        getAllComputerTable.setStyle("-fx-background-color:#01FFFF;");
+        getAllComputerTable.setOnAction(event -> {
+            AllComputerView av = new AllComputerView(currentUser);
+            Scene scene = av.showView(stage);
+            stage.setScene(scene);
+        });
+
+        MenuItem getAllSuppliersTable = new MenuItem("-Get All Supplier Table-");
+        getAllSuppliersTable.setStyle("-fx-font-weight: bold;");
+        getAllSuppliersTable.setId("getAllSuppliersTable-button");
+        getAllSuppliersTable.setStyle("-fx-background-color:#01FFFF;");
+        getAllSuppliersTable.setOnAction(event -> {
+            AllSupplierView av = new AllSupplierView(currentUser);
+            Scene scene = av.showView(stage);
+            stage.setScene(scene);
+        });
+
+        MenuItem getAllCartelRecordTable = new MenuItem("-Get All Cartel Record Table-");
+        getAllCartelRecordTable.setStyle("-fx-font-weight: bold;");
+        getAllCartelRecordTable.setId("getAllCartelRecordTable-button");
+        getAllCartelRecordTable.setStyle("-fx-background-color:#01FFFF;");
+        getAllCartelRecordTable.setOnAction(event -> {
+            AllCartelRecordView av = new AllCartelRecordView(currentUser);
+            Scene scene = av.showView(stage);
+            stage.setScene(scene);
+        });
+
+        MenuItem getAllCartelTable = new MenuItem("-Get All Cartel Table-");
+        getAllCartelTable.setStyle("-fx-font-weight: bold;");
+        getAllCartelTable.setId("getAllCartelTable-button");
+        getAllCartelTable.setStyle("-fx-background-color:#01FFFF;");
+        getAllCartelTable.setOnAction(event -> {
+            AllCartelView av = new AllCartelView(currentUser);
+            Scene scene = av.showView(stage);
+            stage.setScene(scene);
+        });
 
         MenuItem getAllCartels = new MenuItem("-Get All Cartel Info-");
         getAllCartels.setOnAction(new EventHandler<ActionEvent>() {
@@ -126,10 +169,10 @@ public class AdministratorHomeView {
         });
 
 
-        MenuItem getAllBooks = new MenuItem("-Get All Computers Info-");
+        MenuItem getAllComputers = new MenuItem("-Get All Computers Info-");
 //        root.getChildren().add(getAllUser);
 
-        getAllBooks.setOnAction(new EventHandler<ActionEvent>() {
+        getAllComputers.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent arg0) {
@@ -143,38 +186,47 @@ public class AdministratorHomeView {
 
         });
 
-        MenuItem getAllComputerTable = new MenuItem("-Get All Computers Table-");
-        getAllComputerTable.setStyle("-fx-font-weight: bold;");
-        getAllComputerTable.setId("getAllComputerTable-button");
-        getAllComputerTable.setStyle("-fx-background-color:#01FFFF;");
-        getAllComputerTable.setOnAction(event -> {
-            AllComputerView av= new AllComputerView(currentUser);
-            Scene scene= av.showView(stage);
-            stage.setScene(scene);
+        MenuItem getAllSuppliers = new MenuItem("-Get All Suppliers Info-");
+//        root.getChildren().add(getAllUser);
+
+        getAllSuppliers.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                SupplierFactory bookFactory = new SupplierFactory();
+                Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                successAlert.setHeaderText("All Suppliers Information");
+                successAlert.setContentText(bookFactory.findAllSuppliers());
+                successAlert.showAndWait();
+                System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+            }
+
         });
 
         MenuItem getUser = new MenuItem("-Get Current User Info-");
         getUser.setOnAction(e -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Name: "+this.currentUser.getFirstName()+"\n"+
-                    "Surname: "+this.currentUser.getLastName()+"\n"+
-                    "Role: "+this.currentUser.getRole()+"\n"+
-                    "Email: "+this.currentUser.getEmail()+"\n"+
-                    "Date Of Birth: "+this.currentUser.getDateOfBirth()+"\n"+
-                    "Phone Number: "+this.currentUser.getPhoneNumber()+"\n"+
-                    "User: "+this.currentUser.getUser()+"\n");
+            alert.setContentText("ID: " + this.currentUser.getEmployeesId() + "\n" +
+                    "Name: " + this.currentUser.getFirstName() + "\n" +
+                    "Surname: " + this.currentUser.getLastName() + "\n" +
+                    "Role: " + this.currentUser.getRole() + "\n" +
+                    "Email: " + this.currentUser.getEmail() + "\n" +
+                    "Date Of Birth: " + this.currentUser.getDateOfBirth() + "\n" +
+                    "Phone Number: " + this.currentUser.getPhoneNumber() + "\n" +
+                    "User: " + this.currentUser.getUser() + "\n");
             alert.setHeaderText("The user Information");
             alert.showAndWait();
 
         });
 
-        userMenu.getItems().addAll(getUser, getAllUser, getAllUserTable, getAllClients, getAllClientTable, getAllBooks,
-                getAllComputerTable, getAllCartels, getAllCartelRecord);
+        userMenu.getItems().addAll(getUser, getAllUser, getAllClients, getAllComputers, getAllSuppliers,
+                getAllCartels, getAllUserTable, getAllClientTable, getAllComputerTable, getAllSuppliersTable,
+                getAllCartelTable, getAllCartelRecordTable);
 
-        Label logOutLabel=new Label("Log Out");
-        Menu logout=new Menu("", logOutLabel);
-        logOutLabel.setOnMouseClicked(e->{
-            AdministratorLoginView lv= new AdministratorLoginView();
+        Label logOutLabel = new Label("Log Out");
+        Menu logout = new Menu("", logOutLabel);
+        logOutLabel.setOnMouseClicked(e -> {
+            AdministratorLoginView lv = new AdministratorLoginView();
             stage.setScene(lv.showView(stage));
         });
 
@@ -196,7 +248,7 @@ public class AdministratorHomeView {
                 Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 successAlert.setHeaderText("Buying Computer");
                 successAlert.showAndWait();
-                    stage.setScene(new PaymentTypeAdministrator().showView(stage));
+                stage.setScene(new PaymentTypeAdministrator().showView(stage));
                 System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
             }
 
@@ -206,7 +258,7 @@ public class AdministratorHomeView {
         findComputer.setStyle("-fx-font-weight: bold;");
         findComputer.setId("findComputer-button");
         findComputer.setStyle("-fx-background-color:#01FFFF;");
-        findComputer.setOnAction(e->{
+        findComputer.setOnAction(e -> {
             stage.setScene(new ComputerFindingView().execute(stage));
         });
 
@@ -214,7 +266,7 @@ public class AdministratorHomeView {
         findEmployee.setStyle("-fx-font-weight: bold;");
         findEmployee.setId("findComputer-button");
         findEmployee.setStyle("-fx-background-color:#01FFFF;");
-        findEmployee.setOnAction(e->{
+        findEmployee.setOnAction(e -> {
             stage.setScene(new FindEmployeeView().execute(stage));
         });
 
@@ -225,22 +277,54 @@ public class AdministratorHomeView {
         findClients.setStyle("-fx-font-weight: bold;");
         findClients.setId("findClients-button");
         findClients.setStyle("-fx-background-color:#01FFFF;");
-        findClients.setOnAction(e->{
+        findClients.setOnAction(e -> {
             stage.setScene(new ClientFindingView().execute(stage));
         });
 
         findBookOrClient.getItems().addAll(findClients);
         mainPane.setTop(menuBar);
 
-        MenuItem findCartelsByEmployees = new MenuItem("-Find Sells By One Employee-");
+        MenuItem findSuppliers = new MenuItem("-Find Suppliers-");
+        findSuppliers.setStyle("-fx-font-weight: bold;");
+        findSuppliers.setId("findSuppliers-button");
+        findSuppliers.setStyle("-fx-background-color:#01FFFF;");
+        findSuppliers.setOnAction(e -> {
+            stage.setScene(new FindSupplierView().execute(stage));
+        });
+
+        findBookOrClient.getItems().addAll(findSuppliers);
+        mainPane.setTop(menuBar);
+
+        MenuItem countSalaries = new MenuItem("-Get Current Cost-");
+        countSalaries.setStyle("-fx-font-weight: bold;");
+        countSalaries.setId("countSalaries-button");
+        countSalaries.setStyle("-fx-background-color:#01FFFF;");
+        countSalaries.setOnAction(e -> {
+            EmployeeFactory employeeFactory = new EmployeeFactory();
+            SupplierFactory supplierFactory = new SupplierFactory();
+            int sum = 0;
+            sum = employeeFactory.countSalaries() + supplierFactory.countCost();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Sum Of Salaries " + employeeFactory.countSalaries() + " $ " + "\n" +
+                    "Cost Of Products From Suppliers " + supplierFactory.countCost() + " $ " + "\n" +
+                    "All Cost For This Month Is " + sum + " $ ");
+            alert.setHeaderText("The Cost Of Business Information");
+            alert.showAndWait();
+
+        });
+
+        countOptions.getItems().addAll(countSalaries);
+        mainPane.setTop(menuBar);
+
+        MenuItem findCartelsByEmployees = new MenuItem("-Count Sells By One Employee-");
         findCartelsByEmployees.setStyle("-fx-font-weight: bold;");
-        findCartelsByEmployees.setId("findClients-button");
+        findCartelsByEmployees.setId("findCartelsByEmployees-button");
         findCartelsByEmployees.setStyle("-fx-background-color:#01FFFF;");
-        findCartelsByEmployees.setOnAction(e->{
+        findCartelsByEmployees.setOnAction(e -> {
             stage.setScene(new CartelCounts().execute(stage));
         });
 
-        findBookOrClient.getItems().addAll(findCartelsByEmployees);
+        countOptions.getItems().addAll(findCartelsByEmployees);
         mainPane.setTop(menuBar);
 
 
@@ -254,25 +338,31 @@ public class AdministratorHomeView {
         });
 
         MenuItem createClientButton = new MenuItem("-Create Client Button-");
-        createClientButton.setOnAction(e->{
+        createClientButton.setOnAction(e -> {
             stage.setScene(new ClientSignUpView().execute(stage));
         });
 
         MenuItem createComputerButton = new MenuItem("-Create Computer Button-");
-        createComputerButton.setOnAction(e->{
+        createComputerButton.setOnAction(e -> {
             stage.setScene(new ComputerStockRegistrationView().execute(stage));
         });
 
-        createMenu.getItems().addAll(getVerificationStatus, createClientButton, createComputerButton);
+        MenuItem createSupplierButton = new MenuItem("-Create Supplier Button-");
+        createSupplierButton.setOnAction(e -> {
+            stage.setScene(new RegisterSuppliersAdministratorView().execute(stage));
+        });
+
+        createMenu.getItems().addAll(getVerificationStatus, createClientButton, createComputerButton, createSupplierButton);
 
         menuBar.getMenus().add(createMenu);
         menuBar.getMenus().add(findBookOrClient);
+        menuBar.getMenus().add(countOptions);
         menuBar.getMenus().add(logout);
         mainPane.setTop(menuBar);
 
         mainPane.setCenter(root1);
 
-        HBox hBox=new HBox();
+        HBox hBox = new HBox();
 
         // create a background fill
         BackgroundFill background_fill = new BackgroundFill(Color.ROSYBROWN,
@@ -283,7 +373,6 @@ public class AdministratorHomeView {
 
         // set background
         root1.setBackground(background);
-
 
 
         root1.setStyle("-fx-background-image: url('img_1.png')");

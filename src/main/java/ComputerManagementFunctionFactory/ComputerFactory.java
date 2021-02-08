@@ -1,6 +1,7 @@
 package ComputerManagementFunctionFactory;
 
 import model.Computers;
+import model.Supplier;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class ComputerFactory {
     Session session = HibernateUtils.getSessionFactory().openSession();
-    private ArrayList<Computers> books;
+    private ArrayList<Computers> computers;
 
     public ComputerFactory(Session session) {
         this.session = session;
@@ -27,7 +28,7 @@ public class ComputerFactory {
 
     public String findAllComputers() {
         System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
-        System.out.println("Print All From Book: ");
+        System.out.println("Print All From Computer: ");
         session.createQuery("from Computers").getResultList().forEach(System.out::println);
         return null;
     }
@@ -37,16 +38,16 @@ public class ComputerFactory {
         System.out.println("Print All From Computer: ");
         Query query = session.createQuery("from Computers");
 
-        List<Computers> books = query.getResultList();
+        List<Computers> computers = query.getResultList();
         session.close();
-        return books;
+        return computers;
 
     }
 
-    public Computers findComputersByName(String bookName) {
+    public Computers findComputersByName(String computerName) {
 
-        Query query = session.createQuery("select b from Computers b where b.computerName=:bookName");
-        query.setParameter("bookName", bookName);
+        Query query = session.createQuery("select b from Computers b where b.computerName=:computerName");
+        query.setParameter("computerName", computerName);
         List<Computers> computers = query.getResultList();
 
         Computers computer = null;
@@ -63,15 +64,24 @@ public class ComputerFactory {
         Query query = session.createQuery("select b from Computers b where b.isbn=:isbn");
         query.setParameter("isbn", isbn);
         List<Computers> computers = query.getResultList();
-
-        Computers computer = null;
+        session.close();
 
         if (!computers.isEmpty()) {
             return computers.get(0);
         }
-        session.close();
-        return computer;
+
+        return null;
     }
+
+//    public List<Computers> findComputersBySupplier(String supplier) {
+//
+//        Query query = session.createQuery("select b from Computers b where b.supplier=:supplier");
+//        query.setParameter("supplier", supplier);
+//        List<Computers> computers = query.getResultList();
+//
+//        session.close();
+//        return computers;
+//    }
 
     public void createComputers(final Computers computers) {
 
@@ -83,17 +93,12 @@ public class ComputerFactory {
 
     }
 
-    public boolean createComputerSection(String computerName, String computerType, String isbn,
-                                         String supplier, Integer quantity, Integer price, LocalDateTime createdOn) {
-
-        // the data are okay
-        // create the user
-        Computers computers = new Computers(computerName, computerType, isbn, supplier, quantity, price, createdOn);
-        //this.computers.add(computers);
-        createComputers(computers);
-        return true;
-
-    }
+//    public boolean createComputerSection(String computerName, String computerType, String isbn,
+//                                         Integer quantity, Integer price, LocalDateTime createdOn, Supplier supplierID) {
+//
+//
+//
+//    }
 
 
     public void editComputers(Computers updatedComputer) {
@@ -121,12 +126,12 @@ public class ComputerFactory {
 //    }
 
 
-
     public Computers findComputersByID(int Id) {
         System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
         System.out.println("Print All From Computer by id: ");
         return session.find(Computers.class, Id);
     }
+
 
 //    public void editBook(final Book updatedBook, int postion) {
 //        Transaction transaction = session.beginTransaction();
@@ -135,8 +140,6 @@ public class ComputerFactory {
 //
 //        transaction.commit();
 //    }
-
-
 
 
 }

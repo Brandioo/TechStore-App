@@ -21,7 +21,6 @@ public class Computers {
     private String ComputerType;
     private String isbn;
     private LocalDateTime dateOfPublication;
-    private String supplier;
     private Integer quantity;
     private Integer price;
     private String createdBy;
@@ -33,14 +32,20 @@ public class Computers {
     @EqualsAndHashCode.Exclude
     private Set<CartelRecord> cartelRecords = new HashSet<>();
 
-    public Computers(String bookName, String genere, String isbn, String supplier, Integer quantity, Integer price, LocalDateTime createdOn) {
+    @ManyToOne
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @JoinColumn(name = "suppliers_supplierID")
+    private Supplier suppliers;
+
+    public Computers(String bookName, String genere, String isbn, Integer quantity, Integer price, LocalDateTime createdOn, Supplier supplierID) {
         this.computerName = bookName;
         this.ComputerType = genere;
         this.isbn = isbn;
-        this.supplier = supplier;
         this.quantity = quantity;
         this.price = price;
         this.createdOn = createdOn;
+        this.suppliers=supplierID;
     }
 
 

@@ -91,7 +91,7 @@ public class AdministratorLoginView {
         root.add(signUp, 2, 11);
 
         signUp.setOnAction(e->{
-            stage.setScene(new SignUpAdministratorView().execute(stage));
+            stage.setScene(new SignUpAdministrator().execute(stage));
         });
 
         BorderPane mainPane = new BorderPane();

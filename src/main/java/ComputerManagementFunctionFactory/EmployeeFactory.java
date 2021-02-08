@@ -112,12 +112,12 @@ public class EmployeeFactory {
 
     public boolean signUp(String firstName, String lastName, LocalDate dateOfBirth, String email,
                           String phoneNumber, String role, String user, String password, String verifiedPassword,
-                          LocalDateTime createdOn) {
+                          Integer salary, LocalDateTime createdOn) {
         if (password.equals(verifiedPassword)) {
             // the data are okay
             // create the user
             Employee employee = new Employee( firstName, lastName, dateOfBirth, email, phoneNumber, role
-                    , user, password, createdOn);
+                    , user, password, salary, createdOn);
             //this.employees.add(employee);
             createEmployee(employee);
             return true;
@@ -146,5 +146,14 @@ public class EmployeeFactory {
         System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
         System.out.println("Print All From Sellers from Employee: ");
         session.createQuery("select e.firstName from Employee e where e.role='Seller'").getResultList().forEach(System.out::println);
+    }
+
+    public int countSalaries() {
+
+        Query query = session.createQuery("select sum(c.salary) from Employee c");
+        Integer cartels = Math.toIntExact((Long) query.getSingleResult());
+
+        return cartels;
+
     }
 }

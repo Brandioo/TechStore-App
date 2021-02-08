@@ -1,5 +1,6 @@
 package CartelRecordView;
 
+import CashierView.CashierHomeView;
 import ComputerView.ComputerFindingView;
 import ComputerView.BuyComputerView;
 import CartelView.CartelRegistrationView;
@@ -136,7 +137,7 @@ public class CartelRecordRegistrationView {
                 CartelFactory cartelFactory = new CartelFactory();
                 CartelRecordFactory cartelRecordFactory = new CartelRecordFactory();
                 ClientFactory clientFactory = new ClientFactory();
-                ComputerFactory bookFactory = new ComputerFactory();
+                ComputerFactory computerFactory = new ComputerFactory();
                 EmployeeFactory employeeFactory = new EmployeeFactory();
                 CartelRecord cartelRecord = new CartelRecord();
 
@@ -152,7 +153,7 @@ public class CartelRecordRegistrationView {
                 cartelRecord.setEndData(LocalDateTime.of(returnYear, returnMonth, returnDay, returnHour, returnMinute));
 
                 Integer computerID = spinner6.getValue();
-                cartelRecord.setComputers(bookFactory.findComputersByID(computerID));
+                cartelRecord.setComputers(computerFactory.findComputersByID(computerID));
 
                 Integer cartelID = spinner7.getValue();
                 cartelRecord.setCartel(cartelFactory.findCartelsByID(cartelID));
@@ -166,13 +167,7 @@ public class CartelRecordRegistrationView {
 
                 cartelRecordFactory.createCartelRecord(cartelRecord);
 
-                if (currentComputer == null && currentCartel == null) {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                    errorAlert.setHeaderText("There was an error");
-                    errorAlert.setContentText("Register Computer With It's ID At Buy Computer Section! " + "\n"
-                            + "Register Cartel At Cartel Registration Section! ");
-                    errorAlert.showAndWait();
-                } else {
+                if (cartelRecordFactory!=null) {
                     //Employee currentEmployee=new Employee();
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("Success");
@@ -180,6 +175,12 @@ public class CartelRecordRegistrationView {
                     successAlert.showAndWait();
                     stage.setScene(new AdministratorHomeView(currentUser).execute(stage));
                     successAlert.close();
+                } else {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setHeaderText("There was an error");
+                    errorAlert.setContentText("Register Computer With It's ID At Buy Computer Section! " + "\n"
+                            + "Register Cartel At Cartel Registration Section! ");
+                    errorAlert.showAndWait();
 
                 }
             }
@@ -254,19 +255,8 @@ public class CartelRecordRegistrationView {
         menuBar.getMenus().add(userMenu);
         mainPane.setTop(menuBar);
 
-//
-//        Label findClientViewLabel=new Label("Find Client ID");
-//        findClientViewLabel.setStyle("-fx-font-weight: bold;");
-//        Menu findClientID=new Menu("", findClientViewLabel);
-//        findClientViewLabel.setOnMouseClicked(e->{
-//            FindClient findEmployeeView1= new FindEmployeeView(currentUser);
-//            stage.setScene(findEmployeeView1.execute(stage));
-//        });
-//
-//        menuBar.getMenus().add(findClientID);
-//        mainPane.setTop(menuBar);
 
-//        root1.setStyle("-fx-background-image: url('img_17.png')");
+        root1.setStyle("-fx-background-image: url('img_17.png')");
         mainPane.setCenter(root1);
         Scene scene = new Scene(mainPane, 960, 350);
         scene.getStylesheets().add("style.css");

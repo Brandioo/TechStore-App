@@ -1,11 +1,6 @@
 package CashierView;
 
-import AdministratorViews.AdministratorHomeView;
-import CartelRecordView.CartelRecordRegistrationCashierView;
-import CartelRecordView.CartelRecordRegistrationView;
 import ComputerManagementFunctionFactory.ComputerFactory;
-import ComputerView.BuyComputerView;
-import ComputerView.BuyOnlineComputerView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;

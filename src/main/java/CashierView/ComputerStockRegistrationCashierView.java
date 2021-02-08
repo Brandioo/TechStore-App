@@ -2,6 +2,7 @@ package CashierView;
 
 import AdministratorViews.AdministratorHomeView;
 import ComputerManagementFunctionFactory.ComputerFactory;
+import ComputerManagementFunctionFactory.SupplierFactory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,11 +13,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.Computers;
 import model.Employee;
+import model.Supplier;
 
 import java.time.LocalDateTime;
 
 public class ComputerStockRegistrationCashierView {
+    private Supplier currentSupplier;
     private Employee currentUser;
     public Scene execute(Stage stage) {
         GridPane root1 = new GridPane();
@@ -124,20 +128,34 @@ public class ComputerStockRegistrationCashierView {
 
             @Override
             public void handle(ActionEvent arg0) {
+                Computers computer=new Computers();
+                ComputerFactory computerFactory=new ComputerFactory();
+                SupplierFactory supplierFactory=new SupplierFactory();
+
                 String computerName = computerNameField.getText();
+                computer.setComputerName(computerName);
+
                 String computerType = computerTypeField.getText();
+                computer.setComputerType(computerType);
+
                 String isbn = isbnField.getText();
-                String supplier = supplierField.getText();
+                computer.setIsbn(isbn);
+
                 Integer quantity = spinner1.getValue();
+                computer.setQuantity(quantity);
+
                 Integer price = spinner2.getValue();
+                computer.setPrice(price);
+
                 LocalDateTime createdOn = LocalDateTime.now();
-                //String supplier = supplierField.getText();
-                // boolean isRememberMe = remember.isSelected();
+                computer.setCreatedOn(createdOn);
 
-                ComputerFactory bookFactory = new ComputerFactory();
-                boolean isRegistered = bookFactory.createComputerSection(computerName, computerType, isbn, supplier, quantity, price, createdOn);
+                Integer supplierID = spinner1.getValue();
+                computer.setSuppliers(supplierFactory.findSupplierByID(supplierID));
 
-                if (!isRegistered) {
+
+
+                if (currentSupplier==null) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");
                     errorAlert.setContentText("The registration was not done correctly");

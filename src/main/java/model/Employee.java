@@ -27,6 +27,7 @@ public class Employee {
     private String role;
     private String user;
     private String password;
+    private Integer salary;
     private String createdBy;
     private LocalDateTime createdOn;
     private String modifiedBy;
@@ -36,7 +37,7 @@ public class Employee {
     @EqualsAndHashCode.Exclude
     private Set<Cartel> cartels = new HashSet<>();
 
-    public Employee(String firstName, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, String role, String user, String password, LocalDateTime createdOn) {
+    public Employee(String firstName, String lastName, LocalDate dateOfBirth, String email, String phoneNumber, String role, String user, String password, Integer salary, LocalDateTime createdOn) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -45,6 +46,7 @@ public class Employee {
         this.role = role;
         this.user = user;
         this.password = password;
+        this.salary = salary;
         this.createdOn = createdOn;
     }
 

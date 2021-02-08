@@ -13,7 +13,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LocalDateStringConverter;
+import model.Computers;
 import model.Employee;
 import AdministratorViews.AdministratorHomeView;
 
@@ -193,8 +195,29 @@ public class AllUsersView {
         });
 
 
+        TableColumn salaryColumn = new TableColumn("Salary");
+        salaryColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        salaryColumn.setCellValueFactory(new PropertyValueFactory("salary"));
+        salaryColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent>(){
 
-        table.getColumns().addAll(firstNameColumn, lastNameColumn, dateOfBirth, emailColumn, phoneNumberColumn, roleColumn, userColumn, passwordColumn);
+            @Override
+            public void handle(TableColumn.CellEditEvent t) {
+                // TODO Auto-generated method stub
+
+                Employee currentEmployee= (Employee) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                int pos= table.getSelectionModel().getSelectedIndex();
+                Integer newPrice=(Integer) t.getNewValue();
+
+                currentEmployee.setSalary(newPrice);
+                employeeFactory.editEmployee(currentEmployee);
+            }
+
+        });
+
+
+
+        table.getColumns().addAll(firstNameColumn, lastNameColumn, dateOfBirth, emailColumn, phoneNumberColumn,
+                roleColumn, userColumn, passwordColumn, salaryColumn);
 
         Button save= new Button("Save");
         save.setOnAction(e->{

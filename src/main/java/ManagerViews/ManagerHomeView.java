@@ -1,11 +1,7 @@
 package ManagerViews;
 
 import ClientView.ClientFindingManagerView;
-import ComputerView.AllComputerView;
-import CartelView.CartelCounts;
-import AdministratorViews.AllClientView;
 import ComputerManagementFunctionFactory.*;
-import EmployeesView.AllUsersView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -103,10 +99,21 @@ public class ManagerHomeView {
             stage.setScene(scene);
         });
 
+        MenuItem getAllSuppliersTable = new MenuItem("-Get All Supplier Table-");
+        getAllSuppliersTable.setStyle("-fx-font-weight: bold;");
+        getAllSuppliersTable.setId("getAllSuppliersTable-button");
+        getAllSuppliersTable.setStyle("-fx-background-color:#01FFFF;");
+        getAllSuppliersTable.setOnAction(event -> {
+            AllSupplierManagerView av= new AllSupplierManagerView(currentUser);
+            Scene scene= av.showView(stage);
+            stage.setScene(scene);
+        });
+
         MenuItem getUser = new MenuItem("-Get Current User Info-");
         getUser.setOnAction(e -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Name: "+this.currentUser.getFirstName()+"\n"+
+            alert.setContentText("ID: "+this.currentUser.getEmployeesId()+"\n"+
+                    "Name: "+this.currentUser.getFirstName()+"\n"+
                     "Surname: "+this.currentUser.getLastName()+"\n"+
                     "Role: "+this.currentUser.getRole()+"\n"+
                     "Email: "+this.currentUser.getEmail()+"\n"+
@@ -119,7 +126,7 @@ public class ManagerHomeView {
         });
 
         userMenu.getItems().addAll(getUser, getAllUserTable, getAllClientTable,
-                getAllComputerTable, getAllCartels);
+                getAllComputerTable, getAllSuppliersTable, getAllCartels);
 
         Label logOutLabel=new Label("Log Out");
         Menu logout=new Menu("", logOutLabel);
@@ -161,6 +168,17 @@ public class ManagerHomeView {
         findBookOrClient.getItems().addAll(findClients);
         mainPane.setTop(menuBar);
 
+        MenuItem findSuppliers = new MenuItem("-Find Suppliers-");
+        findSuppliers.setStyle("-fx-font-weight: bold;");
+        findSuppliers.setId("findSuppliers-button");
+        findSuppliers.setStyle("-fx-background-color:#01FFFF;");
+        findSuppliers.setOnAction(e -> {
+            stage.setScene(new FindSupplierManagerView().execute(stage));
+        });
+
+        findBookOrClient.getItems().addAll(findSuppliers);
+        mainPane.setTop(menuBar);
+
         MenuItem getVerificationStatus = new MenuItem("-Verification Status-");
         getVerificationStatus.setOnAction(e -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -170,19 +188,19 @@ public class ManagerHomeView {
 
         });
 
-//        MenuItem createClientButton = new MenuItem("-Create Client Button-");
-//        createClientButton.setOnAction(e->{
-//            stage.setScene(new ClientSignUpView().execute(stage));
-//        });
-//
-//        MenuItem createComputerButton = new MenuItem("-Create Computer Button-");
-//        createComputerButton.setOnAction(e->{
-//            stage.setScene(new ComputerStockRegistrationManagerView().execute(stage));
-//        });
+        MenuItem createSupplierButton = new MenuItem("-Create Supplier Button-");
+        createSupplierButton.setOnAction(e -> {
+            stage.setScene(new RegisterSuppliersManagerView().execute(stage));
+        });
 
-        MenuItem findCartelsByEmployees = new MenuItem("-Find Sells By One Employee-");
+        MenuItem createComputerButton = new MenuItem("-Create Computer Button-");
+        createComputerButton.setOnAction(e->{
+            stage.setScene(new ComputerStockRegistrationManagerView().execute(stage));
+        });
+
+        MenuItem findCartelsByEmployees = new MenuItem("-Count Sells By One Employee-");
         findCartelsByEmployees.setStyle("-fx-font-weight: bold;");
-        findCartelsByEmployees.setId("findClients-button");
+        findCartelsByEmployees.setId("findCartelsByEmployees-button");
         findCartelsByEmployees.setStyle("-fx-background-color:#01FFFF;");
         findCartelsByEmployees.setOnAction(e->{
             stage.setScene(new ManagerCartelCounts().execute(stage));
@@ -191,7 +209,18 @@ public class ManagerHomeView {
         countOptions.getItems().addAll(findCartelsByEmployees);
         mainPane.setTop(menuBar);
 
-        createMenu.getItems().addAll(getVerificationStatus);
+//        MenuItem searchSupply = new MenuItem("-Find What Suppliers Offer-");
+//        searchSupply.setStyle("-fx-font-weight: bold;");
+//        searchSupply.setId("searchSupply-button");
+//        searchSupply.setStyle("-fx-background-color:#01FFFF;");
+//        searchSupply.setOnAction(e->{
+//            stage.setScene(new FindWhatSuppliersOffer().execute(stage));
+//        });
+//
+//        countOptions.getItems().addAll(searchSupply);
+//        mainPane.setTop(menuBar);
+
+        createMenu.getItems().addAll(getVerificationStatus, createSupplierButton, createComputerButton);
 
         menuBar.getMenus().add(createMenu);
         menuBar.getMenus().add(findBookOrClient);

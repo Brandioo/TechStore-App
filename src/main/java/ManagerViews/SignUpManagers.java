@@ -100,17 +100,24 @@ public class SignUpManagers {
         root.add(verifiedPasswordLabel, 1, 10);
         root.add(verifiedPasswordField, 2, 10);
 
+        Spinner<Integer> spinner1 = new Spinner<>(1, 1000, 1);
+
+        Label salaryLabel=new Label("Salary: ");
+        salaryLabel.setTextFill(Color.BLACK);
+        salaryLabel.setStyle("-fx-font-weight: bold;");
+        root.add(salaryLabel,1,11);
+        root.add(spinner1,2,11);
 
         Label descriptionLabel = new Label("Description");
         descriptionLabel.setTextFill(Color.BLACK);
         descriptionLabel.setStyle("-fx-font-weight: bold;");
-        root.add(descriptionLabel, 1, 14);
+        root.add(descriptionLabel, 1, 12);
         TextArea descriptionArea = new TextArea();
-        root.add(descriptionArea, 2, 14);
+        root.add(descriptionArea, 2, 12);
 
         Button signupButton = new Button("Sign up");
         signupButton.setStyle("-fx-font-weight: bold;");
-        root.add(signupButton, 2, 16);
+        root.add(signupButton, 2, 15);
 
         signupButton.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -124,13 +131,15 @@ public class SignUpManagers {
                 String role = (String) professionDropDown.getValue();
                 String user = userField.getText();
                 String password = passwordField.getText();
+                Integer salary=spinner1.getValue();
                 String verfiedPassword = verifiedPasswordField.getText();
                 LocalDateTime createdOn = LocalDateTime.now();
                 //String description = descriptionArea.getText();
                 // boolean isRememberMe = remember.isSelected();
 
                 EmployeeFactory employeeFactory = new EmployeeFactory();
-                boolean isRegistered = employeeFactory.signUp(firstName, lastName, dateOfBirth, email, phoneNumber, role, user, password, verfiedPassword, createdOn);
+                boolean isRegistered = employeeFactory.signUp(firstName, lastName, dateOfBirth, email, phoneNumber,
+                        role, user, password, verfiedPassword, salary, createdOn);
                 if (!isRegistered) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");

@@ -1,6 +1,7 @@
 package CartelView;
 
 import ComputerManagementFunctionFactory.CartelFactory;
+import ComputerManagementFunctionFactory.CartelRecordFactory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -55,7 +56,10 @@ public class CartelCounts {
 
 
                 CartelFactory cartelFactory = new CartelFactory();
+                CartelRecordFactory cartelRecordFactory = new CartelRecordFactory();
                 Integer findCartels =  cartelFactory.countSells(employeeNameFieldText);
+                Integer sumCartels=cartelRecordFactory.countMoney(employeeNameFieldText);
+                Integer countSells=cartelRecordFactory.countSellsFinal(employeeNameFieldText);
 
                 if (findCartels == null) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -66,9 +70,11 @@ public class CartelCounts {
 
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("Cartels Found");
-                    successAlert.setContentText("Product Sold");
+                    successAlert.setContentText("Product Sold: "+"\n");
 //                    cartelFactory.editBook(findBook);
-                    successAlert.setContentText("Count: " + findCartels + "\n");
+                    successAlert.setContentText("Interactions With Clients: " + findCartels + "\n"+
+                            "Products Sold: "+countSells+"\n"+
+                            "Money Made: "+sumCartels);
                     successAlert.showAndWait();
                     successAlert.close();
                 }
@@ -91,9 +97,9 @@ public class CartelCounts {
         mainPane.setTop(menuBar);
 
 
-//        root1.setStyle("-fx-background-image: url('purchase.png')");
+        root1.setStyle("-fx-background-image: url('img_10.png')");
         mainPane.setCenter(root1);
-        Scene scene = new Scene(mainPane, 563, 209);
+        Scene scene = new Scene(mainPane, 626, 387);
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.setTitle("See All Cartels Done By Employee");

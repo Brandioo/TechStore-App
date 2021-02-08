@@ -78,7 +78,7 @@ public class BuyOnlineComputerView {
                 Computers findComputer = computerFactory.findComputersByIsbn(isbn);
 
 
-                if (findComputer == null && findComputer.getQuantity() <= 0) {
+                if (findComputer == null || findComputer.getQuantity() <= 0) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");
                     errorAlert.setContentText("Computer not available");
@@ -93,11 +93,11 @@ public class BuyOnlineComputerView {
                         successAlert.setContentText("Computer Is Found..." + "\n"
                                 + "Time To Buy New Computers ! " + "\n"
                                 + "Quantity Left Is Limited: " + findComputer.getQuantity() + "\n"
-                                + "You Paid: " + findComputer.getPrice() + "-ALL");
+                                + "You Paid: " + findComputer.getPrice() + " $ ");
                     } else {
                         successAlert.setContentText("Computer Is Found..." + "\n"
                                 + "Quantity Left: " + findComputer.getQuantity() + "\n"
-                                + "You Paid: " + findComputer.getPrice() + "-ALL");
+                                + "You Paid: " + findComputer.getPrice() + " $ ");
                     }
                     successAlert.showAndWait();
                     successAlert.close();

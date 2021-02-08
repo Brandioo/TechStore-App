@@ -19,6 +19,7 @@ public class HibernateUtils {
                 configuration.addAnnotatedClass(CartelRecord.class);
                 configuration.addAnnotatedClass(Client.class);
                 configuration.addAnnotatedClass(Employee.class);
+                configuration.addAnnotatedClass(Supplier.class);
 
                 ServiceRegistry serviceRegistry = new
                         StandardServiceRegistryBuilder()

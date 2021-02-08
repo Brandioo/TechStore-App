@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LocalDateStringConverter;
 import model.Employee;
 
@@ -191,9 +192,28 @@ public class AllUsersManagerView {
 
         });
 
+        TableColumn priceColumn = new TableColumn("Salary");
+        priceColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        priceColumn.setCellValueFactory(new PropertyValueFactory("salary"));
+        priceColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent>(){
+
+            @Override
+            public void handle(TableColumn.CellEditEvent t) {
+                // TODO Auto-generated method stub
+                Employee currentEmployee= (Employee) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                int pos= table.getSelectionModel().getSelectedIndex();
+                Integer newPrice=(Integer) t.getNewValue();
+
+                currentEmployee.setSalary(newPrice);
+                employeeFactory.editEmployee(currentEmployee);
+            }
+
+        });
 
 
-        table.getColumns().addAll(firstNameColumn, lastNameColumn, dateOfBirth, emailColumn, phoneNumberColumn, roleColumn, userColumn, passwordColumn);
+
+        table.getColumns().addAll(firstNameColumn, lastNameColumn, dateOfBirth, emailColumn, phoneNumberColumn,
+                roleColumn, userColumn, passwordColumn, priceColumn);
 
         Button save= new Button("Save");
         save.setOnAction(e->{

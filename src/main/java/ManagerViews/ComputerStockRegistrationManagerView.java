@@ -2,6 +2,7 @@ package ManagerViews;
 
 import AdministratorViews.AdministratorHomeView;
 import ComputerManagementFunctionFactory.ComputerFactory;
+import ComputerManagementFunctionFactory.SupplierFactory;
 import ManagerViews.ManagerHomeView;
 import ManagerViews.ManagerLoginView;
 import javafx.event.ActionEvent;
@@ -14,11 +15,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.Computers;
 import model.Employee;
+import model.Supplier;
 
 import java.time.LocalDateTime;
 
 public class ComputerStockRegistrationManagerView {
+    private Supplier currentSupplier;
     private Employee currentUser;
     public Scene execute(Stage stage) {
         GridPane root1 = new GridPane();
@@ -59,20 +63,13 @@ public class ComputerStockRegistrationManagerView {
 
         Spinner<Integer> spinner2 = new Spinner<>(1, 1000, 1);
 
+        Spinner<Integer> spinner3 = new Spinner<>(1, 1000, 1);
+
 
 // Creates an integer spinner with 0 as min, 100 as max and 10 as initial
 // value and 10 as amount to increment or decrement by, per step
         // Spinner<Integer> spinner2 = new Spinner<>(0, 100, 10, 10);
 
-//        Label quantityLabel = new Label("Quantity: ");
-//        IntegerField quantityField = new IntegerField();
-//        root1.add(quantityLabel, 1, 6);
-//        root1.add(quantityField, 2, 6);
-//
-//        Label priceLabel = new Label("Price: ");
-//        IntegerField priceField = new IntegerField();
-//        root1.add(priceLabel, 1, 7);
-//        root1.add(priceField, 2, 7);
 
 //
 
@@ -83,35 +80,25 @@ public class ComputerStockRegistrationManagerView {
         root1.add(spinner1,4,9);
 
 
-//        Label quantityLabel = new Label("Quantity: ");
-//        quantityLabel.setTextFill(Color.web("white"));
-//        quantityLabel.setStyle("-fx-font-weight: bold;");
-//        root1.add(quantityLabel, 1, 6);
-//        root1.add(spinner1,2,6);
-//        TextField quantityField = new TextField();
-//        root1.add(quantityField, 2, 8);
-
         Label priceLabel=new Label("Price:    ");
         priceLabel.setTextFill(Color.WHITE);
         priceLabel.setStyle("-fx-font-weight: bold;");
         root1.add(priceLabel,1,11);
         root1.add(spinner2,4,11);
 
-//        Label priceLabel = new Label("Price: ");
-//        priceLabel.setTextFill(Color.web("white"));
-//        priceLabel.setStyle("-fx-font-weight: bold;");
-//        root1.add(quantityLabel, 1, 7);
-//        root1.add(spinner2,2,7);
-//        TextField priceField = new TextField();
-//        root1.add(priceField, 2, 8);
+        Label supplierIDLabel=new Label("Supplier ID:    ");
+        supplierIDLabel.setTextFill(Color.WHITE);
+        supplierIDLabel.setStyle("-fx-font-weight: bold;");
+        root1.add(supplierIDLabel,1,12);
+        root1.add(spinner3,4,12);
 
 
         Label createdOnLabel = new Label("Creation (Auto Calc. Now): ");
         createdOnLabel.setTextFill(Color.WHITE);
         createdOnLabel.setStyle("-fx-font-weight: bold;");
         TextField createdOnField = new TextField();
-        root1.add(createdOnLabel, 1, 12);
-        root1.add(createdOnField, 4, 12);
+        root1.add(createdOnLabel, 1, 13);
+        root1.add(createdOnField, 4, 13);
 
         Button createComputerButton = new Button("-Computer Registration-");
         createComputerButton.setStyle("-fx-font-weight: bold;"); //letters are written in bold type
@@ -120,26 +107,40 @@ public class ComputerStockRegistrationManagerView {
         createComputerButton.setStyle("-fx-background-color:#000000;"); //Background is Black
         HBox h1=new HBox(); //Declare h box
         h1.getChildren().add(createComputerButton); //Adding button inside the hBox
-        root1.add(createComputerButton, 4, 14);
+        root1.add(createComputerButton, 4, 15);
 
         createComputerButton.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent arg0) {
+                Computers computer=new Computers();
+                ComputerFactory computerFactory=new ComputerFactory();
+                SupplierFactory supplierFactory=new SupplierFactory();
+
                 String computerName = computerNameField.getText();
+                computer.setComputerName(computerName);
+
                 String computerType = computerTypeField.getText();
+                computer.setComputerType(computerType);
+
                 String isbn = isbnField.getText();
-                String supplier = supplierField.getText();
+                computer.setIsbn(isbn);
+
                 Integer quantity = spinner1.getValue();
+                computer.setQuantity(quantity);
+
                 Integer price = spinner2.getValue();
+                computer.setPrice(price);
+
                 LocalDateTime createdOn = LocalDateTime.now();
-                //String supplier = supplierField.getText();
-                // boolean isRememberMe = remember.isSelected();
+                computer.setCreatedOn(createdOn);
 
-                ComputerFactory bookFactory = new ComputerFactory();
-                boolean isRegistered = bookFactory.createComputerSection(computerName, computerType, isbn, supplier, quantity, price, createdOn);
+                Integer supplierID = spinner3.getValue();
+                computer.setSuppliers(supplierFactory.findSupplierByID(supplierID));
 
-                if (!isRegistered) {
+                computerFactory.createComputers(computer);
+
+                if (currentSupplier==null) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");
                     errorAlert.setContentText("The registration was not done correctly");

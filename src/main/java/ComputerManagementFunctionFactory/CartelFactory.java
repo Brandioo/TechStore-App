@@ -3,6 +3,7 @@ package ComputerManagementFunctionFactory;
 import model.Cartel;
 import model.Client;
 import model.Employee;
+import model.Supplier;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -68,22 +69,25 @@ public class CartelFactory {
 
     }
 
-    public Integer countSells(String firstName) {
+    public List<Cartel> findAllCartelsList() {
+        System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
+        System.out.println("Print All From Cartels: ");
+        Query query = session.createQuery("from Cartel ");
 
-        Query query = session.createQuery("select count(cartelId) from Cartel c where c.employee.firstName =: firstName");
-        query.setParameter("firstName", firstName);
         List<Cartel> cartels = query.getResultList();
-
-        Integer cartel = 0;
-
-        if (!cartels.isEmpty()) {
-            return 0;
-        }
-//        }else if(cartel.getEmployee().getFirstName().equals(firstName)){
-//            int count=0;
-//            return count++;
-//        }
         session.close();
-        return cartel;
+        return cartels;
+
+    }
+
+    public int countSells(String firstName) {
+
+        Query query = session.createQuery("select count(c.cartelId) from Cartel c where c.employee.firstName =: firstName");
+        query.setParameter("firstName", firstName);
+        Integer cartels = Math.toIntExact((Long) query.getSingleResult());
+
+        session.close();
+        return cartels;
+
     }
 }

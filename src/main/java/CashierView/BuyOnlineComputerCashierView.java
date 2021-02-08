@@ -1,9 +1,6 @@
 package CashierView;
 
-import AdministratorViews.PaymentTypeAdministrator;
-import CartelView.CartelRegistrationCashierView;
 import CartelView.CartelRegistrationView;
-import CashierView.PaymentTypeCashier;
 import ComputerManagementFunctionFactory.ComputerFactory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -80,7 +77,7 @@ public class BuyOnlineComputerCashierView {
                 Computers findComputer = computerFactory.findComputersByIsbn(isbn);
 
 
-                if (findComputer == null && findComputer.getQuantity() <= 0) {
+                if (findComputer == null || findComputer.getQuantity() <= 0) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");
                     errorAlert.setContentText("Computer not available");
@@ -90,20 +87,20 @@ public class BuyOnlineComputerCashierView {
                     successAlert.setHeaderText("Computer Found");
                     successAlert.setContentText("The Credentials are okay");
                     findComputer.setQuantity(findComputer.getQuantity()-1);
-                    stage.setScene(new CartelRegistrationCashierView(findComputer).execute(stage));
+                    computerFactory.editComputers(findComputer);
+//                    computerFactory.editBook(findComputer);
+                    stage.setScene(new CartelRegistrationView(findComputer).execute(stage));
                     if (findComputer.getQuantity() <= 5) {
                         successAlert.setContentText("Computer Is Found..." + "\n"
                                 + "Time To Buy New Computers ! " + "\n"
                                 + "Quantity Left Is Limited: " + findComputer.getQuantity() + "\n"
-                                + "You Paid: " + findComputer.getPrice() + "-ALL");
+                                + "You Paid: " + findComputer.getPrice() + " $ ");
                     } else {
                         successAlert.setContentText("Computer Is Found..." + "\n"
                                 + "Quantity Left: " + findComputer.getQuantity() + "\n"
-                                + "You Paid: " + findComputer.getPrice() + "-ALL");
+                                + "You Paid: " + findComputer.getPrice() + " $ ");
                     }
                     successAlert.showAndWait();
-                    successAlert.close();
-                    computerFactory.editComputers(findComputer);
                     successAlert.close();
                 }
             }

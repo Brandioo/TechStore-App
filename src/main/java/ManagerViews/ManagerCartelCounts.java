@@ -2,6 +2,7 @@ package ManagerViews;
 
 import AdministratorViews.AdministratorHomeView;
 import ComputerManagementFunctionFactory.CartelFactory;
+import ComputerManagementFunctionFactory.CartelRecordFactory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -55,7 +56,9 @@ public class ManagerCartelCounts {
 
 
                 CartelFactory cartelFactory = new CartelFactory();
+                CartelRecordFactory cartelRecordFactory=new CartelRecordFactory();
                 Integer findCartels =  cartelFactory.countSells(employeeNameFieldText);
+                Integer countSells=cartelRecordFactory.countSellsFinal(employeeNameFieldText);
 
                 if (findCartels == null) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -68,7 +71,8 @@ public class ManagerCartelCounts {
                     successAlert.setHeaderText("Cartels Found");
                     successAlert.setContentText("Product Sold");
 //                    cartelFactory.editBook(findBook);
-                    successAlert.setContentText("Count: " + findCartels + "\n");
+                    successAlert.setContentText("Interactions With Clients: " + findCartels + "\n"+
+                            "Products Sold: "+countSells+"\n");
                     successAlert.showAndWait();
                     successAlert.close();
                 }

@@ -68,6 +68,21 @@ public class CashierHomeView {
 
         });
 
+        MenuItem getAllCartelRecord = new MenuItem("-Get All Cartel-Record Info-");
+        getAllCartelRecord.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                CartelRecordFactory cartelRecordFactory = new CartelRecordFactory();
+                Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                successAlert.setHeaderText("All Cartels-Record Information");
+                successAlert.setContentText(cartelRecordFactory.findAllCartelRecord());
+                successAlert.showAndWait();
+                System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+            }
+
+        });
+
 
         MenuItem getAllComputerTable = new MenuItem("-Get All Computers Table-");
         getAllComputerTable.setStyle("-fx-font-weight: bold;");
@@ -82,20 +97,21 @@ public class CashierHomeView {
         MenuItem getUser = new MenuItem("-Get Current User Info-");
         getUser.setOnAction(e -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Name: "+this.currentUser.getFirstName()+"\n"+
-                    "Surname: "+this.currentUser.getLastName()+"\n"+
-                    "Role: "+this.currentUser.getRole()+"\n"+
-                    "Email: "+this.currentUser.getEmail()+"\n"+
-                    "Date Of Birth: "+this.currentUser.getDateOfBirth()+"\n"+
-                    "Phone Number: "+this.currentUser.getPhoneNumber()+"\n"+
-                    "User: "+this.currentUser.getUser()+"\n");
+            alert.setContentText("ID: " + this.currentUser.getEmployeesId() + "\n" +
+                    "Name: " + this.currentUser.getFirstName() + "\n" +
+                    "Surname: " + this.currentUser.getLastName() + "\n" +
+                    "Role: " + this.currentUser.getRole() + "\n" +
+                    "Email: " + this.currentUser.getEmail() + "\n" +
+                    "Date Of Birth: " + this.currentUser.getDateOfBirth() + "\n" +
+                    "Phone Number: " + this.currentUser.getPhoneNumber() + "\n" +
+                    "User: " + this.currentUser.getUser() + "\n");
             alert.setHeaderText("The user Information");
             alert.showAndWait();
 
         });
 
-        userMenu.getItems().addAll(getUser, getAllClientTable,
-                getAllComputerTable, getAllCartels);
+        userMenu.getItems().addAll(getAllClientTable,
+                getAllComputerTable, getAllCartels, getAllCartelRecord, getUser);
 
         Label logOutLabel = new Label("Log Out");
         Menu logout = new Menu("", logOutLabel);

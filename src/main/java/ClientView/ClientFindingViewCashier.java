@@ -1,8 +1,6 @@
 package ClientView;
 
-import AdministratorViews.AdministratorHomeView;
-import CartelView.CartelRegistrationCashierView;
-import CartelView.CartelRegistrationView;
+import CashierView.CartelRegistrationCashierView;
 import CashierView.CashierHomeView;
 import ComputerManagementFunctionFactory.ClientFactory;
 import javafx.event.ActionEvent;

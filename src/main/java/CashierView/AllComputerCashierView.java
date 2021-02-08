@@ -91,26 +91,6 @@ public class AllComputerCashierView {
 
         });
 
-
-//        TableColumn supplierColumn = new TableColumn("Date Of Birth");
-//        supplierColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-//        supplierColumn.setCellValueFactory(new PropertyValueFactory("dateofbirth"));
-//        supplierColumn.setOnEditCommit(new EventHandler<CellEditEvent>(){
-//
-//            @Override
-//            public void handle(CellEditEvent t) {
-//                // TODO Auto-generated method stub
-//
-//                Employee currentUser= (Employee) t.getTableView().getItems().get(t.getTablePosition().getRow());
-//                int pos= table.getSelectionModel().getSelectedIndex();
-//                Object newDateOfBirth= t.getNewValue();
-//
-//                currentUser.setDateOfBirth(newDateOfBirth);
-//                libraryManagementOptionsFactory.editUser(currentUser, pos);
-//            }
-//
-//        });
-
         TableColumn ISBNColumn = new TableColumn("ISBN");
         ISBNColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         ISBNColumn.setCellValueFactory(new PropertyValueFactory("isbn"));
@@ -129,45 +109,6 @@ public class AllComputerCashierView {
             }
 
         });
-//
-//        TableColumn dateofPublication = new TableColumn("DateofPublication");
-//        dateofPublication.setCellFactory(TextFieldTableCell.forTableColumn());
-//        dateofPublication.setCellValueFactory(new PropertyValueFactory("DateofPublication"));
-//        dateofPublication.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent>(){
-//
-//            @Override
-//            public void handle(TableColumn.CellEditEvent t) {
-//                // TODO Auto-generated method stub
-//
-//                Book currentBook= (Book) t.getTableView().getItems().get(t.getTablePosition().getRow());
-//                int pos= table.getSelectionModel().getSelectedIndex();
-//                LocalDateTime newDateofPubliciation=(LocalDateTime) t.getNewValue();
-//
-//                currentBook.setDateOfPublication(newDateofPubliciation);
-//                libraryManagementOptionsFactory.editBook(currentBook, pos);
-//            }
-
-//        });
-
-        TableColumn supplierColumn = new TableColumn("Supplier ");
-        supplierColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        supplierColumn.setCellValueFactory(new PropertyValueFactory("supplier"));
-        supplierColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent>(){
-
-            @Override
-            public void handle(TableColumn.CellEditEvent t) {
-                // TODO Auto-generated method stub
-
-                Computers currentComputer= (Computers) t.getTableView().getItems().get(t.getTablePosition().getRow());
-                int pos= table.getSelectionModel().getSelectedIndex();
-                String newSupplier=(String) t.getNewValue();
-                System.out.println("Description");
-                currentComputer.setSupplier(newSupplier);
-                computerFactory.editComputers(currentComputer);
-            }
-
-        });
-
 
         TableColumn quantityColumn = new TableColumn("Quantity ");
         quantityColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -178,12 +119,12 @@ public class AllComputerCashierView {
             public void handle(TableColumn.CellEditEvent t) {
                 // TODO Auto-generated method stub
 
-                Computers currentBook= (Computers) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                Computers currentComputer= (Computers) t.getTableView().getItems().get(t.getTablePosition().getRow());
                 int pos= table.getSelectionModel().getSelectedIndex();
                 Integer newQuantity=(Integer) t.getNewValue();
 
-                currentBook.setQuantity(newQuantity);
-                computerFactory.editComputers(currentBook);
+                currentComputer.setQuantity(newQuantity);
+                computerFactory.editComputers(currentComputer);
             }
 
         });
@@ -198,42 +139,22 @@ public class AllComputerCashierView {
             public void handle(TableColumn.CellEditEvent t) {
                 // TODO Auto-generated method stub
 
-                Computers currentBook= (Computers) t.getTableView().getItems().get(t.getTablePosition().getRow());
+                Computers currentComputer= (Computers) t.getTableView().getItems().get(t.getTablePosition().getRow());
                 int pos= table.getSelectionModel().getSelectedIndex();
                 Integer newPrice=(Integer) t.getNewValue();
 
-                currentBook.setPrice(newPrice);
-                computerFactory.editComputers(currentBook);
+                currentComputer.setPrice(newPrice);
+                computerFactory.editComputers(currentComputer);
             }
 
         });
 
-//        TableColumn priceColumn = new TableColumn("Price ");
-//        priceColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-//        priceColumn.setCellValueFactory(new PropertyValueFactory("price"));
-//        priceColumn.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent>(){
-//
-//            @Override
-//            public void handle(TableColumn.CellEditEvent t) {
-//                // TODO Auto-generated method stub
-//
-//                Book currentBook= (Book) t.getTableView().getItems().get(t.getTablePosition().getRow());
-//                int pos= table.getSelectionModel().getSelectedIndex();
-//                Integer newPrice=(Integer) t.getNewValue();
-//
-//                currentBook.setPrice(newPrice);
-//                libraryManagementOptionsFactory.editBook(currentBook, pos);
-//            }
-//
-//        });
-
-
-        table.getColumns().addAll(computerName, computerType, ISBNColumn, supplierColumn, quantityColumn, priceColumn);//, quantityColumn, priceColumn);
+        table.getColumns().addAll(computerName, computerType, ISBNColumn, quantityColumn, priceColumn);//, quantityColumn, priceColumn);
 
 
         Button save= new Button("Save");
         save.setOnAction(e->{
-            AdministratorHomeView hv = new AdministratorHomeView(currentUser);
+            CashierHomeView hv = new CashierHomeView(currentUser);
             stage.setScene(hv.execute(stage));
         });
 
