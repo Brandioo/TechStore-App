@@ -1,13 +1,17 @@
 package CartelView;
 
-import AdministratorViews.PaymentTypeAdministrator;
-import ComputerView.BuyComputerView;
+import CartelRecordView.CartelRecordRegistrationCashierView;
 import CartelRecordView.CartelRecordRegistrationView;
+import CashierView.BuyComputerCashierView;
+import CashierView.FindEmployeeCashiersView;
+import CashierView.PaymentTypeCashier;
 import ClientView.ClientFindingView;
-import EmployeesView.FindEmployeeView;
+import ClientView.ClientFindingViewCashier;
 import ComputerManagementFunctionFactory.CartelFactory;
 import ComputerManagementFunctionFactory.ClientFactory;
 import ComputerManagementFunctionFactory.EmployeeFactory;
+import ComputerView.BuyComputerView;
+import EmployeesView.FindEmployeeView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -19,17 +23,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import model.Computers;
 import model.Cartel;
+import model.Computers;
 import model.Employee;
 
 import java.time.LocalDateTime;
 
-public class CartelRegistrationView {
+public class CartelRegistrationCashierView {
     private Employee currentUser;
     private Computers currentComputer;
 
-    public CartelRegistrationView(Computers currentBook) {
+    public CartelRegistrationCashierView(Computers currentBook) {
         this.currentComputer = currentBook;
     }
 
@@ -141,7 +145,7 @@ public class CartelRegistrationView {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The Cartel was registered successfully");
                     successAlert.showAndWait();
-                    stage.setScene(new CartelRecordRegistrationView(cartel).execute(stage));
+                    stage.setScene(new CartelRecordRegistrationCashierView(cartel).execute(stage));
                     //stage.setScene(new HomeView(currentEmployee).execute(stage));
                     successAlert.close();
 
@@ -157,8 +161,8 @@ public class CartelRegistrationView {
         backLabel.setStyle("-fx-font-weight: bold;");
         Menu back=new Menu("", backLabel);
         backLabel.setOnMouseClicked(e->{
-            PaymentTypeAdministrator buyComputerView= new PaymentTypeAdministrator(currentUser);
-            stage.setScene(buyComputerView.showView(stage));
+            PaymentTypeCashier paymentTypeCashier= new PaymentTypeCashier(currentUser);
+            stage.setScene(paymentTypeCashier.showView(stage));
         });
 
         menuBar.getMenus().add(back);
@@ -168,7 +172,7 @@ public class CartelRegistrationView {
 //        findEmployeeViewLabel.setStyle("-fx-font-weight: bold;");
         Menu findEmployeeID=new Menu("", findEmployeeViewLabel);
         findEmployeeViewLabel.setOnMouseClicked(e->{
-            FindEmployeeView findEmployeeView1= new FindEmployeeView(currentUser);
+            FindEmployeeCashiersView findEmployeeView1= new FindEmployeeCashiersView(currentUser);
             stage.setScene(findEmployeeView1.execute(stage));
         });
 
@@ -179,7 +183,7 @@ public class CartelRegistrationView {
 //        findClientViewLabel.setStyle("-fx-font-weight: bold;");
         Menu findClientID=new Menu("", findClientViewLabel);
         findClientViewLabel.setOnMouseClicked(e->{
-            ClientFindingView clientFindingView= new ClientFindingView(currentUser);
+            ClientFindingViewCashier clientFindingView= new ClientFindingViewCashier(currentUser);
             stage.setScene(clientFindingView.execute(stage));
         });
 

@@ -91,7 +91,7 @@ public class CartelCounts {
         mainPane.setTop(menuBar);
 
 
-//        root1.setStyle("-fx-background-image: url('buyBackGround.png')");
+//        root1.setStyle("-fx-background-image: url('purchase.png')");
         mainPane.setCenter(root1);
         Scene scene = new Scene(mainPane, 563, 209);
         scene.getStylesheets().add("style.css");

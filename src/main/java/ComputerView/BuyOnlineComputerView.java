@@ -52,8 +52,8 @@ public class BuyOnlineComputerView {
         computerISBNLabel.setTextFill(Color.web("white"));
         computerISBNLabel.setStyle("-fx-font-weight: bold;");
         TextField computerISBNField = new TextField();
-        root1.add(computerISBNLabel, 3, 1);
-        root1.add(computerISBNField, 4, 1);
+        root1.add(computerISBNLabel, 3, 2);
+        root1.add(computerISBNField, 4, 2);
 
         Button buyBookButton = new Button("-Buy-");
         buyBookButton.setTextFill(Color.web("black"));
@@ -88,7 +88,6 @@ public class BuyOnlineComputerView {
                     successAlert.setHeaderText("Book Found");
                     successAlert.setContentText("The Credentials are okay");
                     findComputer.setQuantity(findComputer.getQuantity()-1);
-//                    computerFactory.editBook(findComputer);
                     stage.setScene(new CartelRegistrationView(findComputer).execute(stage));
                     if (findComputer.getQuantity() <= 5) {
                         successAlert.setContentText("Computer Is Found..." + "\n"
@@ -102,6 +101,7 @@ public class BuyOnlineComputerView {
                     }
                     successAlert.showAndWait();
                     successAlert.close();
+                    computerFactory.editComputers(findComputer);
                 }
             }
 
@@ -142,9 +142,11 @@ public class BuyOnlineComputerView {
         menuBar.getMenus().add(findComputer);
         mainPane.setTop(menuBar);
 
-//        root1.setStyle("-fx-background-image: url('')");
+
+
+        root1.setStyle("-fx-background-image: url('img_8.png')");
         mainPane.setCenter(root1);
-        Scene scene = new Scene(mainPane, 563, 209);
+        Scene scene = new Scene(mainPane, 714, 260);
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.setTitle("Welcome to GONLINE Vending Machine");

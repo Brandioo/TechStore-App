@@ -1,7 +1,11 @@
-package ComputerView;
+package CashierView;
 
+import AdministratorViews.PaymentTypeAdministrator;
+import CartelView.CartelRegistrationCashierView;
 import CartelView.CartelRegistrationView;
 import ComputerManagementFunctionFactory.ComputerFactory;
+import ComputerView.AllComputerView;
+import ComputerView.ComputerFindingView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -15,13 +19,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Computers;
 import model.Employee;
-import AdministratorViews.PaymentTypeAdministrator;
 
-public class BuyComputerView {
+public class BuyComputerCashierView {
     private Employee currentUser;
     private Computers currentBook;
 
-    public BuyComputerView(Employee currentUser) {
+    public BuyComputerCashierView(Employee currentUser) {
         this.currentUser = currentUser;
     }
 //    public BookFindingView(Book currentBook) {
@@ -29,7 +32,7 @@ public class BuyComputerView {
 //    }
 
 
-    public BuyComputerView() {
+    public BuyComputerCashierView() {
     }
 
     public Scene execute(Stage stage) {
@@ -77,11 +80,10 @@ public class BuyComputerView {
                     errorAlert.showAndWait();
                 } else {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                    successAlert.setHeaderText("Book Found");
+                    successAlert.setHeaderText("Computer Found");
                     successAlert.setContentText("The Credentials are okay");
                     findComputer.setQuantity(findComputer.getQuantity()-1);
-//                    computerFactory.editBook(findComputer);
-                    stage.setScene(new CartelRegistrationView(findComputer).execute(stage));
+                    stage.setScene(new CartelRegistrationCashierView(findComputer).execute(stage));
                     if (findComputer.getQuantity() <= 5) {
                         successAlert.setContentText("Computer Is Found..." + "\n"
                                 + "Time To Buy New Computers ! " + "\n"
@@ -94,6 +96,7 @@ public class BuyComputerView {
                     }
                     successAlert.showAndWait();
                     successAlert.close();
+                    computerFactory.editComputers(findComputer);
                 }
             }
 
@@ -106,7 +109,7 @@ public class BuyComputerView {
         backLabel.setStyle("-fx-font-weight: bold;");
         Menu back = new Menu("", backLabel);
         backLabel.setOnMouseClicked(e -> {
-            PaymentTypeAdministrator paymentTypeView = new PaymentTypeAdministrator();
+            PaymentTypeCashier paymentTypeView = new PaymentTypeCashier(currentUser);
             stage.setScene(paymentTypeView.showView(stage));
         });
 
@@ -116,7 +119,7 @@ public class BuyComputerView {
         Label allComputersView = new Label("All Computers");
         Menu allComputers = new Menu("", allComputersView);
         allComputersView.setOnMouseClicked(e -> {
-            AllComputerView allComputerView = new AllComputerView(currentUser);
+            AllComputerCashierView allComputerView = new AllComputerCashierView(currentUser);
             stage.setScene(allComputerView.showView(stage));
         });
 
@@ -127,7 +130,7 @@ public class BuyComputerView {
         Label findComputersLabel = new Label("Find Computers");
         Menu findComputer = new Menu("", findComputersLabel);
         findComputersLabel.setOnMouseClicked(e -> {
-            ComputerFindingView bookFindingView = new ComputerFindingView(currentUser);
+            ComputerFindingCashierView bookFindingView = new ComputerFindingCashierView(currentUser);
             stage.setScene(bookFindingView.execute(stage));
         });
 

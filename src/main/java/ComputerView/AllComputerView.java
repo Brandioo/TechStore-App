@@ -1,5 +1,6 @@
 package ComputerView;
 
+import CashierView.BuyOnlineComputerCashierView;
 import ComputerManagementFunctionFactory.ComputerFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -241,7 +242,13 @@ public class AllComputerView {
             stage.setScene(buyBookView.execute(stage));
         });
 
-        root.getChildren().addAll(table, save, buyBook);
+        Button buyBookOnline= new Button("Buy Computer With Credit Card");
+        buyBookOnline.setOnAction(e->{
+            BuyOnlineComputerView buyOnlineComputerView = new BuyOnlineComputerView(currentUser);
+            stage.setScene(buyOnlineComputerView.execute(stage));
+        });
+
+        root.getChildren().addAll(table, save, buyBook, buyBookOnline);
 
         Scene scene= new Scene(root, 450, 450);
         return scene;

@@ -123,6 +123,17 @@ public class ComputerFindingView {
         menuBar.getMenus().add(buyComputer);
         mainPane.setTop(menuBar);
 
+        Label buyComputerCreditLabel = new Label("Buy Computer With Credit Card");
+        buyComputerCreditLabel.setStyle("-fx-font-weight: bold;");
+        Menu buyComputerCredit = new Menu("", buyComputerCreditLabel);
+        buyComputerCreditLabel.setOnMouseClicked(e -> {
+            BuyOnlineComputerView buyComputerView = new BuyOnlineComputerView(currentUser);
+            stage.setScene(buyComputerView.execute(stage));
+        });
+
+        menuBar.getMenus().add(buyComputerCredit);
+        mainPane.setTop(menuBar);
+
         Label cartelRecordRegistrationViewLabel = new Label("Cartel Record Registration View");
         cartelRecordRegistrationViewLabel.setStyle("-fx-font-weight: bold;");
         Menu registerCartelRecord = new Menu("", cartelRecordRegistrationViewLabel);

@@ -1,6 +1,7 @@
 package ClientView;
 
 import AdministratorViews.AdministratorHomeView;
+import CartelView.CartelRegistrationCashierView;
 import CartelView.CartelRegistrationView;
 import CashierView.CashierHomeView;
 import ComputerManagementFunctionFactory.ClientFactory;
@@ -111,7 +112,7 @@ public class ClientFindingViewCashier {
 //        cartelRegistrationView.setStyle("-fx-font-weight: bold;");
         Menu cartelRegistration=new Menu("", cartelRegistrationView);
         cartelRegistrationView.setOnMouseClicked(e->{
-            CartelRegistrationView cartelRegistrationView1= new CartelRegistrationView(currentComputer);
+            CartelRegistrationCashierView cartelRegistrationView1= new CartelRegistrationCashierView(currentComputer);
             stage.setScene(cartelRegistrationView1.execute(stage));
         });
 

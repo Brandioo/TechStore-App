@@ -1,9 +1,11 @@
 package CashierView;
 
 import AdministratorViews.AdministratorHomeView;
+import CartelRecordView.CartelRecordRegistrationCashierView;
 import CartelRecordView.CartelRecordRegistrationView;
 import ComputerManagementFunctionFactory.ComputerFactory;
 import ComputerView.BuyComputerView;
+import ComputerView.BuyOnlineComputerView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -117,19 +119,30 @@ public class ComputerFindingCashierView {
         buyComputerLabel.setStyle("-fx-font-weight: bold;");
         Menu buyComputer = new Menu("", buyComputerLabel);
         buyComputerLabel.setOnMouseClicked(e -> {
-            BuyComputerView buyComputerView = new BuyComputerView(currentUser);
+            BuyComputerCashierView buyComputerView = new BuyComputerCashierView(currentUser);
             stage.setScene(buyComputerView.execute(stage));
         });
 
         menuBar.getMenus().add(buyComputer);
         mainPane.setTop(menuBar);
 
+        Label buyComputerCreditLabelView = new Label("Buy With Credit Card");
+        buyComputerCreditLabelView.setStyle("-fx-font-weight: bold;");
+        Menu buyComputerCredit = new Menu("", buyComputerCreditLabelView);
+        buyComputerCreditLabelView.setOnMouseClicked(e -> {
+            BuyOnlineComputerCashierView buyComputerView = new BuyOnlineComputerCashierView(currentUser);
+            stage.setScene(buyComputerView.execute(stage));
+        });
+
+        menuBar.getMenus().add(buyComputerCredit);
+        mainPane.setTop(menuBar);
+
         Label cartelRecordRegistrationViewLabel = new Label("Cartel Record Registration View");
         cartelRecordRegistrationViewLabel.setStyle("-fx-font-weight: bold;");
         Menu registerCartelRecord = new Menu("", cartelRecordRegistrationViewLabel);
         cartelRecordRegistrationViewLabel.setOnMouseClicked(e -> {
-            CartelRecordRegistrationView buyBookView = new CartelRecordRegistrationView(currentCartel);
-            stage.setScene(buyBookView.execute(stage));
+            CartelRecordRegistrationCashierView cartelRecordRegistrationView = new CartelRecordRegistrationCashierView(currentCartel);
+            stage.setScene(cartelRecordRegistrationView.execute(stage));
         });
 
         menuBar.getMenus().add(registerCartelRecord);

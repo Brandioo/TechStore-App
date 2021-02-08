@@ -1,6 +1,7 @@
 package AdministratorViews;
 
 import ComputerView.BuyComputerView;
+import ComputerView.BuyOnlineComputerView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,6 +19,14 @@ import model.Employee;
 public class PaymentTypeAdministrator {
     private Employee currentUser;
     private Cartel currentCartel;
+
+    public PaymentTypeAdministrator(Employee currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public PaymentTypeAdministrator() {
+    }
+
     public Scene showView(Stage stage) {
         GridPane root = new GridPane();
         root.setHgap(10);
@@ -44,7 +53,7 @@ public class PaymentTypeAdministrator {
 //                    HomeView homeView=new HomeView(loggedIn);
 //                    stage.setScene(homeView.execute(stage));
                 successAlert.showAndWait();
-                BuyComputerView buyBookView=new BuyComputerView();
+                BuyOnlineComputerView buyBookView=new BuyOnlineComputerView();
                 buyBookView.execute(stage);
                 successAlert.close();
 

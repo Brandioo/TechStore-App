@@ -24,7 +24,7 @@ public class CashierLoginView {
         root.setHgap(10);
         root.setVgap(10);
         root.setPadding(new Insets(10, 10, 10, 10));
-        root.setAlignment(Pos.CENTER);
+        root.setAlignment(Pos.CENTER_RIGHT);
 
 
         Label userLabel = new Label("Username:");
@@ -109,9 +109,9 @@ public class CashierLoginView {
         menuBar.getMenus().add(back);
         mainPane.setTop(menuBar);
 
-        root.setStyle("-fx-background-image: url('img_2.png')");
+        root.setStyle("-fx-background-image: url('cashier.png')");
         mainPane.setCenter(root);
-        Scene scene = new Scene(mainPane, 960, 350);
+        Scene scene = new Scene(mainPane, 1024, 682);
         scene.getStylesheets().add("style.css");
         stage.setTitle("Log in");
         return scene;

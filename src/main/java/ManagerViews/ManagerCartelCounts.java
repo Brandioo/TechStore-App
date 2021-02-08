@@ -91,9 +91,9 @@ public class ManagerCartelCounts {
         mainPane.setTop(menuBar);
 
 
-//        root1.setStyle("-fx-background-image: url('buyBackGround.png')");
+        root1.setStyle("-fx-background-image: url('img_10.png')");
         mainPane.setCenter(root1);
-        Scene scene = new Scene(mainPane, 563, 209);
+        Scene scene = new Scene(mainPane, 626, 387);
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.setTitle("See All Cartels Done By Employee");

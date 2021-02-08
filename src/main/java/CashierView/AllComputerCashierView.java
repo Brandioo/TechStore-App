@@ -3,6 +3,7 @@ package CashierView;
 import AdministratorViews.AdministratorHomeView;
 import ComputerManagementFunctionFactory.ComputerFactory;
 import ComputerView.BuyComputerView;
+import ComputerView.BuyOnlineComputerView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -232,7 +233,7 @@ public class AllComputerCashierView {
 
         Button save= new Button("Save");
         save.setOnAction(e->{
-            CashierHomeView hv = new CashierHomeView(currentUser);
+            AdministratorHomeView hv = new AdministratorHomeView(currentUser);
             stage.setScene(hv.execute(stage));
         });
 
@@ -242,7 +243,13 @@ public class AllComputerCashierView {
             stage.setScene(buyBookView.execute(stage));
         });
 
-        root.getChildren().addAll(table, save, buyBook);
+        Button buyBookOnline= new Button("Buy Computer With Credit Card");
+        buyBookOnline.setOnAction(e->{
+            BuyOnlineComputerCashierView buyOnlineComputerView = new BuyOnlineComputerCashierView(currentUser);
+            stage.setScene(buyOnlineComputerView.execute(stage));
+        });
+
+        root.getChildren().addAll(table, save, buyBook, buyBookOnline);
 
         Scene scene= new Scene(root, 450, 450);
         return scene;

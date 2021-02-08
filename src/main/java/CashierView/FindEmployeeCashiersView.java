@@ -1,6 +1,7 @@
 package CashierView;
 
 import AdministratorViews.AdministratorHomeView;
+import CartelView.CartelRegistrationCashierView;
 import CartelView.CartelRegistrationView;
 import CashierView.CashierHomeView;
 import ComputerManagementFunctionFactory.EmployeeFactory;
@@ -105,7 +106,7 @@ public class FindEmployeeCashiersView {
 //        cartelRegistrationView.setStyle("-fx-font-weight: bold;");
         Menu cartelRegistration = new Menu("", cartelRegistrationView);
         cartelRegistrationView.setOnMouseClicked(e -> {
-            CartelRegistrationView cartelRegistrationView1 = new CartelRegistrationView(currentBook);
+            CartelRegistrationCashierView cartelRegistrationView1 = new CartelRegistrationCashierView(currentBook);
             stage.setScene(cartelRegistrationView1.execute(stage));
         });
 

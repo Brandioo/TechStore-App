@@ -18,6 +18,14 @@ import model.Employee;
 public class PaymentTypeCashier {
     private Employee currentUser;
     private Cartel currentCartel;
+
+    public PaymentTypeCashier(Employee currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public PaymentTypeCashier() {
+    }
+
     public Scene showView(Stage stage) {
         GridPane root = new GridPane();
         root.setHgap(10);
@@ -44,7 +52,7 @@ public class PaymentTypeCashier {
 //                    HomeView homeView=new HomeView(loggedIn);
 //                    stage.setScene(homeView.execute(stage));
                 successAlert.showAndWait();
-                BuyComputerView buyBookView=new BuyComputerView();
+                BuyOnlineComputerCashierView buyBookView=new BuyOnlineComputerCashierView();
                 buyBookView.execute(stage);
                 successAlert.close();
 
@@ -68,7 +76,7 @@ public class PaymentTypeCashier {
                 successAlert.setContentText("The Cash Payment Section Is Clicked");
 //                    HomeView homeView=new HomeView(loggedIn);
 //                    stage.setScene(homeView.execute(stage));
-                BuyComputerView buyBookView=new BuyComputerView();
+                BuyComputerCashierView buyBookView=new BuyComputerCashierView();
                 buyBookView.execute(stage);
                 successAlert.showAndWait();
                 successAlert.close();

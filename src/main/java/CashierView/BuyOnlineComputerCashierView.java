@@ -1,6 +1,9 @@
-package ComputerView;
+package CashierView;
 
+import AdministratorViews.PaymentTypeAdministrator;
+import CartelView.CartelRegistrationCashierView;
 import CartelView.CartelRegistrationView;
+import CashierView.PaymentTypeCashier;
 import ComputerManagementFunctionFactory.ComputerFactory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,13 +18,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Computers;
 import model.Employee;
-import AdministratorViews.PaymentTypeAdministrator;
 
-public class BuyComputerView {
+public class BuyOnlineComputerCashierView {
     private Employee currentUser;
     private Computers currentBook;
 
-    public BuyComputerView(Employee currentUser) {
+    public BuyOnlineComputerCashierView(Employee currentUser) {
         this.currentUser = currentUser;
     }
 //    public BookFindingView(Book currentBook) {
@@ -29,7 +31,7 @@ public class BuyComputerView {
 //    }
 
 
-    public BuyComputerView() {
+    public BuyOnlineComputerCashierView() {
     }
 
     public Scene execute(Stage stage) {
@@ -41,12 +43,19 @@ public class BuyComputerView {
         root1.setPadding(new Insets(10, 10, 10, 10));
         root1.setAlignment(Pos.TOP_CENTER);
 
+        Label creditNumberLabel = new Label("Credit Card Number(xxxx-xxxx-xxxx-xxxx): ");
+        creditNumberLabel.setTextFill(Color.web("white"));
+        creditNumberLabel.setStyle("-fx-font-weight: bold;");
+        TextField creditNumberField = new TextField();
+        root1.add(creditNumberLabel, 3, 1);
+        root1.add(creditNumberField, 4, 1);
+
         Label computerISBNLabel = new Label("ISBN Of Computer: ");
         computerISBNLabel.setTextFill(Color.web("white"));
         computerISBNLabel.setStyle("-fx-font-weight: bold;");
         TextField computerISBNField = new TextField();
-        root1.add(computerISBNLabel, 3, 1);
-        root1.add(computerISBNField, 4, 1);
+        root1.add(computerISBNLabel, 3, 2);
+        root1.add(computerISBNField, 4, 2);
 
         Button buyBookButton = new Button("-Buy-");
         buyBookButton.setTextFill(Color.web("black"));
@@ -61,6 +70,7 @@ public class BuyComputerView {
 
             @Override
             public void handle(ActionEvent arg0) {
+                String creditCardNR = creditNumberField.getText();
                 String isbn = computerISBNField.getText();
                 //String description = descriptionArea.getText();
                 // boolean isRememberMe = remember.isSelected();
@@ -77,11 +87,10 @@ public class BuyComputerView {
                     errorAlert.showAndWait();
                 } else {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                    successAlert.setHeaderText("Book Found");
+                    successAlert.setHeaderText("Computer Found");
                     successAlert.setContentText("The Credentials are okay");
                     findComputer.setQuantity(findComputer.getQuantity()-1);
-//                    computerFactory.editBook(findComputer);
-                    stage.setScene(new CartelRegistrationView(findComputer).execute(stage));
+                    stage.setScene(new CartelRegistrationCashierView(findComputer).execute(stage));
                     if (findComputer.getQuantity() <= 5) {
                         successAlert.setContentText("Computer Is Found..." + "\n"
                                 + "Time To Buy New Computers ! " + "\n"
@@ -93,6 +102,8 @@ public class BuyComputerView {
                                 + "You Paid: " + findComputer.getPrice() + "-ALL");
                     }
                     successAlert.showAndWait();
+                    successAlert.close();
+                    computerFactory.editComputers(findComputer);
                     successAlert.close();
                 }
             }
@@ -106,7 +117,7 @@ public class BuyComputerView {
         backLabel.setStyle("-fx-font-weight: bold;");
         Menu back = new Menu("", backLabel);
         backLabel.setOnMouseClicked(e -> {
-            PaymentTypeAdministrator paymentTypeView = new PaymentTypeAdministrator();
+            PaymentTypeCashier paymentTypeView = new PaymentTypeCashier(currentUser);
             stage.setScene(paymentTypeView.showView(stage));
         });
 
@@ -116,7 +127,7 @@ public class BuyComputerView {
         Label allComputersView = new Label("All Computers");
         Menu allComputers = new Menu("", allComputersView);
         allComputersView.setOnMouseClicked(e -> {
-            AllComputerView allComputerView = new AllComputerView(currentUser);
+            AllComputerCashierView allComputerView = new AllComputerCashierView(currentUser);
             stage.setScene(allComputerView.showView(stage));
         });
 
@@ -127,16 +138,16 @@ public class BuyComputerView {
         Label findComputersLabel = new Label("Find Computers");
         Menu findComputer = new Menu("", findComputersLabel);
         findComputersLabel.setOnMouseClicked(e -> {
-            ComputerFindingView bookFindingView = new ComputerFindingView(currentUser);
+            ComputerFindingCashierView bookFindingView = new ComputerFindingCashierView(currentUser);
             stage.setScene(bookFindingView.execute(stage));
         });
 
         menuBar.getMenus().add(findComputer);
         mainPane.setTop(menuBar);
 
-        root1.setStyle("-fx-background-image: url('purchase.png')");
+        root1.setStyle("-fx-background-image: url('img_8.png')");
         mainPane.setCenter(root1);
-        Scene scene = new Scene(mainPane, 563, 209);
+        Scene scene = new Scene(mainPane, 714, 260);
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.setTitle("Welcome to GONLINE Vending Machine");

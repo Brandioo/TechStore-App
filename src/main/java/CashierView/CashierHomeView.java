@@ -42,17 +42,6 @@ public class CashierHomeView {
         root1.setAlignment(Pos.CENTER);
 
 
-        MenuItem getAllUserTable = new MenuItem("-Get All User Table-");
-        getAllUserTable.setStyle("-fx-font-weight: bold;");
-        getAllUserTable.setId("findComputer-button");
-        getAllUserTable.setStyle("-fx-background-color:#01FFFF;");
-        getAllUserTable.setOnAction(event -> {
-            AllUsersCashiersView av = new AllUsersCashiersView(currentUser);
-            Scene scene = av.showView(stage);
-            stage.setScene(scene);
-        });
-
-
         MenuItem getAllClientTable = new MenuItem("-Get All Client Table-");
         getAllClientTable.setStyle("-fx-font-weight: bold;");
         getAllClientTable.setId("getAllClientTable-button");
@@ -105,7 +94,7 @@ public class CashierHomeView {
 
         });
 
-        userMenu.getItems().addAll(getUser, getAllUserTable, getAllClientTable,
+        userMenu.getItems().addAll(getUser, getAllClientTable,
                 getAllComputerTable, getAllCartels);
 
         Label logOutLabel = new Label("Log Out");

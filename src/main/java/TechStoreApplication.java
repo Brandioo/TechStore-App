@@ -1,5 +1,5 @@
-//Brand Citozi SDA-Academy
-//My Group: Xhoi Hysa, Stivi Koko, Hysnije Agalliu
+//Brand Citozi BINF-A
+
 
 import javafx.application.Application;
 import javafx.stage.Stage;
