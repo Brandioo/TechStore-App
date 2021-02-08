@@ -99,7 +99,7 @@ public class ClientSignUpCashierView {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The user was registered successfully");
                     successAlert.showAndWait();
-                    stage.setScene(new AdministratorHomeView(currentUser).execute(stage));
+                    stage.setScene(new CashierHomeView(currentUser).execute(stage));
                     successAlert.close();
                 }
 

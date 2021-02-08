@@ -1,9 +1,7 @@
-package ManagerViews;
+package CashierView;
 
 import AdministratorViews.AdministratorHomeView;
 import ComputerManagementFunctionFactory.ComputerFactory;
-import ManagerViews.ManagerHomeView;
-import ManagerViews.ManagerLoginView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,7 +16,7 @@ import model.Employee;
 
 import java.time.LocalDateTime;
 
-public class ComputerStockRegistrationManagerView {
+public class ComputerStockRegistrationCashierView {
     private Employee currentUser;
     public Scene execute(Stage stage) {
         GridPane root1 = new GridPane();
@@ -149,7 +147,7 @@ public class ComputerStockRegistrationManagerView {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The computer was registered successfully");
                     successAlert.showAndWait();
-                    stage.setScene(new ManagerHomeView(currentEmployee).execute(stage));
+                    stage.setScene(new CashierHomeView(currentEmployee).execute(stage));
                     successAlert.close();
                 }
 
@@ -164,7 +162,7 @@ public class ComputerStockRegistrationManagerView {
         backLabel.setStyle("-fx-font-weight: bold;");
         Menu back=new Menu("", backLabel);
         backLabel.setOnMouseClicked(e->{
-            ManagerHomeView homeView= new ManagerHomeView(currentUser);
+            CashierHomeView homeView= new CashierHomeView(currentUser);
             stage.setScene(homeView.execute(stage));
         });
 

@@ -100,7 +100,7 @@ public class FindEmployeeManagerView {
         menuBar.getMenus().add(back);
         mainPane.setTop(menuBar);
 
-//        root1.setStyle("-fx-background-image: url('findemploees.png')");
+        root1.setStyle("-fx-background-image: url('findemp.png')");
         mainPane.setCenter(root1);
         Scene scene = new Scene(mainPane, 1000, 667);
         scene.getStylesheets().add("style.css");

@@ -118,7 +118,7 @@ public class ComputerStockRegistrationView {
         createComputerButton.setStyle("-fx-background-color:#000000;"); //Background is Black
         HBox h1=new HBox(); //Declare h box
         h1.getChildren().add(createComputerButton); //Adding button inside the hBox
-        root1.add(createComputerButton, 4, 18);
+        root1.add(createComputerButton, 4, 14);
 
         createComputerButton.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -171,12 +171,12 @@ public class ComputerStockRegistrationView {
 
 
 
-//        root1.setStyle("-fx-background-image: url('img_8.png')");
+        root1.setStyle("-fx-background-image: url('img_9.png')");
         mainPane.setCenter(root1);
-        Scene scene = new Scene(mainPane, 570, 870);
+        Scene scene = new Scene(mainPane, 626, 417);
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
-        stage.setTitle("Register Books");
+        stage.setTitle("Register Computers");
         stage.show();
 
         return scene;

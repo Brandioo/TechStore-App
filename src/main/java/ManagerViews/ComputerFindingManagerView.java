@@ -1,9 +1,6 @@
 package ManagerViews;
 
-import AdministratorViews.AdministratorHomeView;
-import CartelRecordView.CartelRecordRegistrationView;
 import ComputerManagementFunctionFactory.ComputerFactory;
-import ComputerView.BuyComputerView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -21,11 +18,11 @@ import model.Employee;
 
 public class ComputerFindingManagerView {
     private Employee currentUser;
-    private Computers currentBook;
+    private Computers currentComputer;
     private Cartel currentCartel;
 
     public ComputerFindingManagerView(Computers currentBook) {
-        this.currentBook = currentBook;
+        this.currentComputer = currentBook;
     }
 
     public ComputerFindingManagerView(Employee currentUser) {
@@ -75,7 +72,7 @@ public class ComputerFindingManagerView {
                 ComputerFactory computerFactory = new ComputerFactory();
                 Computers findComputer = computerFactory.findComputersByName(computerName);
 
-                if (findComputer == null && currentBook.getQuantity() <= 0) {
+                if (findComputer == null) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");
                     errorAlert.setContentText("Computer not available");
@@ -112,9 +109,9 @@ public class ComputerFindingManagerView {
         menuBar.getMenus().add(back);
         mainPane.setTop(menuBar);
 
-//        root1.setStyle("-fx-background-image: url('img_2.png')");
+        root1.setStyle("-fx-background-image: url('img_4.png')");
         mainPane.setCenter(root1);
-        Scene scene = new Scene(mainPane, 473, 473);
+        Scene scene = new Scene(mainPane, 626, 386);
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.setTitle("Find Computers");

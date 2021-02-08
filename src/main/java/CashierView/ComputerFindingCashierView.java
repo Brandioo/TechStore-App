@@ -1,7 +1,9 @@
-package ComputerView;
+package CashierView;
 
+import AdministratorViews.AdministratorHomeView;
 import CartelRecordView.CartelRecordRegistrationView;
 import ComputerManagementFunctionFactory.ComputerFactory;
+import ComputerView.BuyComputerView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,21 +15,20 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import model.Computers;
 import model.Cartel;
+import model.Computers;
 import model.Employee;
-import AdministratorViews.AdministratorHomeView;
 
-public class ComputerFindingView {
+public class ComputerFindingCashierView {
     private Employee currentUser;
     private Computers currentBook;
     private Cartel currentCartel;
 
-    public ComputerFindingView(Computers currentBook) {
+    public ComputerFindingCashierView(Computers currentBook) {
         this.currentBook = currentBook;
     }
 
-    public ComputerFindingView(Employee currentUser) {
+    public ComputerFindingCashierView(Employee currentUser) {
         this.currentUser = currentUser;
     }
 //    public BookFindingView(Book currentBook) {
@@ -35,7 +36,7 @@ public class ComputerFindingView {
 //    }
 
 
-    public ComputerFindingView() {
+    public ComputerFindingCashierView() {
     }
 
     public Scene execute(Stage stage) {
@@ -104,7 +105,7 @@ public class ComputerFindingView {
 //        backLabel.setStyle("-fx-font-weight: bold;");
         Menu back = new Menu("", backLabel);
         backLabel.setOnMouseClicked(e -> {
-            AdministratorHomeView homeView = new AdministratorHomeView(currentUser);
+            CashierHomeView homeView = new CashierHomeView(currentUser);
             stage.setScene(homeView.execute(stage));
         });
 

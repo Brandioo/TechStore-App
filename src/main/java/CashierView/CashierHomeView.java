@@ -85,7 +85,7 @@ public class CashierHomeView {
         getAllComputerTable.setId("getAllComputerTable-button");
         getAllComputerTable.setStyle("-fx-background-color:#01FFFF;");
         getAllComputerTable.setOnAction(event -> {
-            AllComputerView av = new AllComputerView(currentUser);
+            AllComputerCashierView av = new AllComputerCashierView(currentUser);
             Scene scene = av.showView(stage);
             stage.setScene(scene);
         });
@@ -144,7 +144,7 @@ public class CashierHomeView {
         findComputer.setId("findComputer-button");
         findComputer.setStyle("-fx-background-color:#01FFFF;");
         findComputer.setOnAction(e -> {
-            stage.setScene(new ComputerFindingView().execute(stage));
+            stage.setScene(new ComputerFindingCashierView().execute(stage));
         });
 
         MenuItem findEmployee = new MenuItem("-Find Employee-");
@@ -186,7 +186,7 @@ public class CashierHomeView {
 
         MenuItem createComputerButton = new MenuItem("-Create Computer Button-");
         createComputerButton.setOnAction(e -> {
-            stage.setScene(new ComputerStockRegistrationView().execute(stage));
+            stage.setScene(new ComputerStockRegistrationCashierView().execute(stage));
         });
 
         createMenu.getItems().addAll(getVerificationStatus, createClientButton, createComputerButton);
