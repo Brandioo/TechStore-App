@@ -28,17 +28,6 @@ public class AllComputerManagerView {
         this.currentUser = currentUser;
     }
 
-    private Client currentClient;
-
-    public AllComputerManagerView(Client u){
-        this.currentClient = u;
-    }
-
-    private Computers currentBook;
-
-    public AllComputerManagerView(Computers u){
-        this.currentBook = u;
-    }
     public Scene showView(Stage stage) {
 
         VBox root= new VBox();

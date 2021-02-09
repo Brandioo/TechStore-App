@@ -83,8 +83,6 @@ public class ClientSignUpCashierView {
                 String phoneNumber = phoneNumberField.getText();
                 String address = addressField.getText();
                 LocalDateTime createdOn = LocalDateTime.now();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 ClientFactory clientFactory = new ClientFactory();
                 boolean isRegistered = clientFactory.createClientButton(firstName, lastName, email, phoneNumber, address, createdOn);

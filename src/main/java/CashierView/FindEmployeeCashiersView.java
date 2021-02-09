@@ -99,7 +99,6 @@ public class FindEmployeeCashiersView {
         mainPane.setTop(menuBar);
 
         Label cartelRegistrationView = new Label("Cartel Registration View");
-//        cartelRegistrationView.setStyle("-fx-font-weight: bold;");
         Menu cartelRegistration = new Menu("", cartelRegistrationView);
         cartelRegistrationView.setOnMouseClicked(e -> {
             CartelRegistrationCashierView cartelRegistrationView1 = new CartelRegistrationCashierView(currentBook);

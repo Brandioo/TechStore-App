@@ -30,17 +30,6 @@ public class AllSupplierManagerView {
         this.currentUser = currentUser;
     }
 
-    private Client currentClient;
-
-    public AllSupplierManagerView(Client u){
-        this.currentClient = u;
-    }
-
-    private Computers currentBook;
-
-    public AllSupplierManagerView(Computers u){
-        this.currentBook = u;
-    }
     public Scene showView(Stage stage) {
 
         VBox root= new VBox();

@@ -73,16 +73,6 @@ public class ComputerFactory {
         return null;
     }
 
-//    public List<Computers> findComputersBySupplier(String supplier) {
-//
-//        Query query = session.createQuery("select b from Computers b where b.supplier=:supplier");
-//        query.setParameter("supplier", supplier);
-//        List<Computers> computers = query.getResultList();
-//
-//        session.close();
-//        return computers;
-//    }
-
     public void createComputers(final Computers computers) {
 
         Transaction transaction = session.beginTransaction();
@@ -92,14 +82,6 @@ public class ComputerFactory {
         transaction.commit();
 
     }
-
-//    public boolean createComputerSection(String computerName, String computerType, String isbn,
-//                                         Integer quantity, Integer price, LocalDateTime createdOn, Supplier supplierID) {
-//
-//
-//
-//    }
-
 
     public void editComputers(Computers updatedComputer) {
 
@@ -114,32 +96,11 @@ public class ComputerFactory {
     }
 
 
-//    public boolean updateBookSection(Book book, int position) {
-//
-//        // the data are okay
-//        // create the user
-//        //this.book.add(book);
-//        editBook(book);
-//        this.books.set(position,book);
-//        return true;
-//
-//    }
-
-
     public Computers findComputersByID(int Id) {
         System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
         System.out.println("Print All From Computer by id: ");
         return session.find(Computers.class, Id);
     }
-
-
-//    public void editBook(final Book updatedBook, int postion) {
-//        Transaction transaction = session.beginTransaction();
-//
-//        session.update(String.valueOf(postion), updatedBook);
-//
-//        transaction.commit();
-//    }
 
 
 }

@@ -25,12 +25,6 @@ public class AllClientManagerView {
         this.currentUser = currentUser;
     }
 
-    private Client currentClient;
-
-    public AllClientManagerView(Client u){
-        this.currentClient = u;
-    }
-
     public Scene showView(Stage stage) {
 
         VBox root= new VBox();
@@ -81,26 +75,6 @@ public class AllClientManagerView {
             }
 
         });
-
-
-//        TableColumn descriptionColumn = new TableColumn("Date Of Birth");
-//        descriptionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-//        descriptionColumn.setCellValueFactory(new PropertyValueFactory("dateofbirth"));
-//        descriptionColumn.setOnEditCommit(new EventHandler<CellEditEvent>(){
-//
-//            @Override
-//            public void handle(CellEditEvent t) {
-//                // TODO Auto-generated method stub
-//
-//                Employee currentUser= (Employee) t.getTableView().getItems().get(t.getTablePosition().getRow());
-//                int pos= table.getSelectionModel().getSelectedIndex();
-//                Object newDateOfBirth= t.getNewValue();
-//
-//                currentUser.setDateOfBirth(newDateOfBirth);
-//                libraryManagementOptionsFactory.editUser(currentUser, pos);
-//            }
-//
-//        });
 
         TableColumn emailColumn = new TableColumn("Email");
         emailColumn.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -158,10 +132,6 @@ public class AllClientManagerView {
             }
 
         });
-
-
-
-
 
         table.getColumns().addAll(firstNameColumn, lastNameColumn, emailColumn, phoneNumberColumn, addressColumn);
 

@@ -25,10 +25,6 @@ public class ClientFindingView {
     public ClientFindingView(Employee currentUser) {
         this.currentUser = currentUser;
     }
-//    public BookFindingView(Book currentBook) {
-//        this.currentBook = currentBook;
-//    }
-
 
     public ClientFindingView() {
     }

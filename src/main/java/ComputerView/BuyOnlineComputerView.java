@@ -19,7 +19,7 @@ import AdministratorViews.PaymentTypeAdministrator;
 
 public class BuyOnlineComputerView {
     private Employee currentUser;
-    private Computers currentBook;
+    private Computers currentComputer;
 
     public BuyOnlineComputerView(Employee currentUser) {
         this.currentUser = currentUser;
@@ -70,9 +70,6 @@ public class BuyOnlineComputerView {
             public void handle(ActionEvent arg0) {
                 String creditCardNR = creditNumberField.getText();
                 String isbn = computerISBNField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
-
 
                 ComputerFactory computerFactory = new ComputerFactory();
                 Computers findComputer = computerFactory.findComputersByIsbn(isbn);

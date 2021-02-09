@@ -13,15 +13,7 @@ import java.util.List;
 public class CartelRecordFactory {
     Session session = HibernateUtils.getSessionFactory().openSession();
 
-    public CartelRecordFactory(Session session) {
-        this.session = session;
-    }
-
     public CartelRecordFactory() {
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
     }
 
     public void createCartelRecord(final CartelRecord cartelRecord) {
@@ -42,17 +34,6 @@ public class CartelRecordFactory {
     public int countSellsFinal(String firstName) {
 
         Query query = session.createQuery("select count(c.cartelRecordId) from CartelRecord c where c.cartel.employee.firstName=:firstName");
-        query.setParameter("firstName", firstName);
-        Integer cartels = Math.toIntExact((Long) query.getSingleResult());
-
-        session.close();
-        return cartels;
-
-    }
-
-    public int countMoney(String firstName) {
-
-        Query query = session.createQuery("select sum(c.computers.price) from CartelRecord c where c.cartel.employee.firstName=:firstName");
         query.setParameter("firstName", firstName);
         Integer cartels = Math.toIntExact((Long) query.getSingleResult());
 

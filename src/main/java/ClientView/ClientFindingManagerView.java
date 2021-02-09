@@ -26,10 +26,6 @@ public class ClientFindingManagerView {
     public ClientFindingManagerView(Employee currentUser) {
         this.currentUser = currentUser;
     }
-//    public BookFindingView(Book currentBook) {
-//        this.currentBook = currentBook;
-//    }
-
 
     public ClientFindingManagerView() {
     }
@@ -64,8 +60,6 @@ public class ClientFindingManagerView {
             @Override
             public void handle(ActionEvent arg0) {
                 String firstName = clientNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 ClientFactory clientFactory = new ClientFactory();
                 Client findClient = clientFactory.findClientsByName(firstName);

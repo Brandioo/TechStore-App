@@ -25,10 +25,6 @@ public class ClientFindingViewCashier {
     public ClientFindingViewCashier(Employee currentUser) {
         this.currentUser = currentUser;
     }
-//    public BookFindingView(Book currentBook) {
-//        this.currentBook = currentBook;
-//    }
-
 
     public ClientFindingViewCashier() {
     }
@@ -63,8 +59,6 @@ public class ClientFindingViewCashier {
             @Override
             public void handle(ActionEvent arg0) {
                 String firstName = clientNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 ClientFactory clientFactory = new ClientFactory();
                 Client findClient = clientFactory.findClientsByName(firstName);
@@ -107,7 +101,6 @@ public class ClientFindingViewCashier {
         mainPane.setTop(menuBar);
 
         Label cartelRegistrationView=new Label("Cartel Registration View");
-//        cartelRegistrationView.setStyle("-fx-font-weight: bold;");
         Menu cartelRegistration=new Menu("", cartelRegistrationView);
         cartelRegistrationView.setOnMouseClicked(e->{
             CartelRegistrationCashierView cartelRegistrationView1= new CartelRegistrationCashierView(currentComputer);

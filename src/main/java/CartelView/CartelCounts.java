@@ -51,14 +51,10 @@ public class CartelCounts {
             @Override
             public void handle(ActionEvent arg0) {
                 String employeeNameFieldText = employeeNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
-
 
                 CartelFactory cartelFactory = new CartelFactory();
                 CartelRecordFactory cartelRecordFactory = new CartelRecordFactory();
                 Integer findCartels =  cartelFactory.countSells(employeeNameFieldText);
-                Integer sumCartels=cartelRecordFactory.countMoney(employeeNameFieldText);
                 Integer countSells=cartelRecordFactory.countSellsFinal(employeeNameFieldText);
 
                 if (findCartels == null) {
@@ -71,10 +67,9 @@ public class CartelCounts {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("Cartels Found");
                     successAlert.setContentText("Product Sold: "+"\n");
-//                    cartelFactory.editBook(findBook);
                     successAlert.setContentText("Interactions With Clients: " + findCartels + "\n"+
-                            "Products Sold: "+countSells+"\n"+
-                            "Money Made: "+sumCartels);
+                            "Products Sold: "+countSells+"\n");
+//                            "Money Made: "+sumCartels);
                     successAlert.showAndWait();
                     successAlert.close();
                 }

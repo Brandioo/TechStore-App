@@ -133,8 +133,6 @@ public class CashierHomeView {
 
             @Override
             public void handle(ActionEvent arg0) {
-//                VendingMachine vendingMachine=new VendingMachine();
-//                vendingMachine.start();
                 Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 successAlert.setHeaderText("Buying Computer");
                 successAlert.showAndWait();

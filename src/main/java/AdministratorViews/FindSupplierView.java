@@ -60,8 +60,6 @@ public class FindSupplierView {
             @Override
             public void handle(ActionEvent arg0) {
                 String supplierName = supplierNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 SupplierFactory supplierFactory=new SupplierFactory();
                 Supplier findSupplier=supplierFactory.findSupplierByName(supplierName);

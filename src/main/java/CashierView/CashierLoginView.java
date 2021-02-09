@@ -42,7 +42,6 @@ public class CashierLoginView {
         root.add(passwordField, 2, 4);
 
         Button loginButton = new Button("Log in");
-        //loginButton.setStyle("-fx-font-weight: bold;");
         loginButton.setId("loginButton-button");
         loginButton.setStyle("-fx-background-color:#05f8d4;");
         HBox h=new HBox();
@@ -69,8 +68,6 @@ public class CashierLoginView {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The user was logged in successfully");
                     successAlert.setContentText("Welcome "+loggedIn.getFirstName()+"!");
-//                    HomeView homeView=new HomeView(loggedIn);
-//                    stage.setScene(homeView.execute(stage));
                     successAlert.showAndWait();
                     stage.setScene(new CashierHomeView(loggedIn).execute(stage));
                     successAlert.close();

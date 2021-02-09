@@ -29,12 +29,6 @@ public class AllSupplierView {
         this.currentUser = currentUser;
     }
 
-    private Client currentClient;
-
-    public AllSupplierView(Client u){
-        this.currentClient = u;
-    }
-
     private Computers currentComputer;
 
     public AllSupplierView(Computers u){

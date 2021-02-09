@@ -134,13 +134,10 @@ public class SignUpAdministrator {
                 String verfiedPassword = verifiedPasswordField.getText();
                 Integer salary = spinner1.getValue();
                 LocalDateTime createdOn = LocalDateTime.now();
-                //String description = descriptionArea.getText();
-               // boolean isRememberMe = remember.isSelected();
 
                 EmployeeFactory employeeFactory = new EmployeeFactory();
                 boolean isRegistered = employeeFactory.signUp(firstName, lastName, dateOfBirth, email, phoneNumber,
                         role, user, password, verfiedPassword, salary, createdOn);
-                AdministratorLoginView administratorLoginView=new AdministratorLoginView();
                 if (!isRegistered) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");

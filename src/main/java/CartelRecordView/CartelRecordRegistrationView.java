@@ -44,16 +44,7 @@ public class CartelRecordRegistrationView {
         root1.setAlignment(Pos.TOP_CENTER);
 
 
-        Menu userMenu = new Menu("User Control");
-//        userMenu.setStyle("-fx-font-weight: bold;");
-
-//        Label priceLabel = new Label("Price: ");
-//        priceLabel.setTextFill(Color.web("white"));
-//        priceLabel.setStyle("-fx-font-weight: bold;");
-//        root1.add(quantityLabel, 1, 7);
-//        root1.add(spinner2,2,7);
-//        TextField priceField = new TextField();
-//        root1.add(priceField, 2, 8);
+        Menu userMenu = new Menu("Cartel Control");
 
         Spinner<Integer> spinner1 = new Spinner<>(1, 3000, 2021);
 
@@ -158,17 +149,12 @@ public class CartelRecordRegistrationView {
                 Integer cartelID = spinner7.getValue();
                 cartelRecord.setCartel(cartelFactory.findCartelsByID(cartelID));
 
-//                cartelRecord.setCartel(currentCartel);
-//
-//                cartelRecord.setBook(currentBook);
-
                 LocalDateTime createdOn = LocalDateTime.now();
                 cartelRecord.setCreatedOn(createdOn);
 
                 cartelRecordFactory.createCartelRecord(cartelRecord);
 
                 if (cartelRecordFactory!=null) {
-                    //Employee currentEmployee=new Employee();
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("Success");
                     successAlert.setContentText("The Cartel Record was registered successfully");
@@ -202,7 +188,6 @@ public class CartelRecordRegistrationView {
         mainPane.setTop(menuBar);
 
         Label buyComputerViewLabel = new Label("Buy Computer View");
-//        buyComputerViewLabel.setStyle("-fx-font-weight: bold;");
         Menu buyComputer = new Menu("", buyComputerViewLabel);
         buyComputerViewLabel.setOnMouseClicked(e -> {
             BuyComputerView buyBookView = new BuyComputerView(currentUser);
@@ -213,7 +198,6 @@ public class CartelRecordRegistrationView {
         mainPane.setTop(menuBar);
 
         Label homeViewLabel = new Label("Home View");
-//        homeViewLabel.setStyle("-fx-font-weight: bold;");
         Menu homeview = new Menu("", homeViewLabel);
         homeViewLabel.setOnMouseClicked(e -> {
             AdministratorHomeView homeView = new AdministratorHomeView(currentUser);
@@ -224,7 +208,6 @@ public class CartelRecordRegistrationView {
         mainPane.setTop(menuBar);
 
         Label findComputerIDLabel = new Label("Find Computer ID");
-//        findEmployeeViewLabel.setStyle("-fx-font-weight: bold;");
         Menu findComputer = new Menu("", findComputerIDLabel);
         findComputerIDLabel.setOnMouseClicked(e -> {
             ComputerFindingView findBookView = new ComputerFindingView(currentComputer);
@@ -256,7 +239,7 @@ public class CartelRecordRegistrationView {
         mainPane.setTop(menuBar);
 
 
-        root1.setStyle("-fx-background-image: url('img_17.png')");
+        root1.setStyle("-fx-background-image: url('img17.png')");
         mainPane.setCenter(root1);
         Scene scene = new Scene(mainPane, 960, 350);
         scene.getStylesheets().add("style.css");

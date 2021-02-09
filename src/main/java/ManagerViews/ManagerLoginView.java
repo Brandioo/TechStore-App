@@ -71,8 +71,6 @@ public class ManagerLoginView {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The user was logged in successfully");
                     successAlert.setContentText("Welcome "+loggedIn.getFirstName()+"!");
-//                    HomeView homeView=new HomeView(loggedIn);
-//                    stage.setScene(homeView.execute(stage));
                     successAlert.showAndWait();
                     stage.setScene(new ManagerHomeView(loggedIn).execute(stage));
                     successAlert.close();
@@ -82,9 +80,6 @@ public class ManagerLoginView {
                     successAlert.setContentText("Welcome "+loggedIn.getFirstName()+"!"+"\n"+
                             "Time to buy new Computers!"+"\n"+
                             currentComputer.getComputerName()+" is out of stock with Quantity: "+currentComputer.getQuantity());
-
-//                    HomeView homeView=new HomeView(loggedIn);
-//                    stage.setScene(homeView.execute(stage));
                     successAlert.showAndWait();
                     stage.setScene(new ManagerHomeView(loggedIn).execute(stage));
                     successAlert.close();

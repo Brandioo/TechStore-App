@@ -51,9 +51,6 @@ public class ManagerCartelCounts {
             @Override
             public void handle(ActionEvent arg0) {
                 String employeeNameFieldText = employeeNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
-
 
                 CartelFactory cartelFactory = new CartelFactory();
                 CartelRecordFactory cartelRecordFactory=new CartelRecordFactory();
@@ -70,7 +67,6 @@ public class ManagerCartelCounts {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("Cartels Found");
                     successAlert.setContentText("Product Sold");
-//                    cartelFactory.editBook(findBook);
                     successAlert.setContentText("Interactions With Clients: " + findCartels + "\n"+
                             "Products Sold: "+countSells+"\n");
                     successAlert.showAndWait();

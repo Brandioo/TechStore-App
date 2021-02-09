@@ -22,10 +22,6 @@ public class EmployeeFactory {
     public EmployeeFactory() {
     }
 
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
     public ArrayList<Employee> getUsers() {
         return employees;
     }
@@ -52,12 +48,6 @@ public class EmployeeFactory {
         return null;
     }
 
-    public void findAllEmployeesNames() {
-        System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
-        System.out.println("Print All Names From Employee: ");
-        session.createQuery("select e.firstName from Employee e").getResultList().forEach(System.out::println);
-    }
-
     public List<Employee> findAllEmployeeList() {
         System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
         System.out.println("Print All From Employee: ");
@@ -66,16 +56,6 @@ public class EmployeeFactory {
         List<Employee> employees = query.getResultList();
         session.close();
         return employees;
-
-    }
-
-    public Employee findEmployeeID() {
-        System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
-        System.out.println("Print All From Employee: ");
-        Query query = session.createQuery("select e.employeesId from Employee e");
-        Employee employee= (Employee) query.getResultList();
-        session.close();
-        return employee;
 
     }
 
@@ -133,19 +113,6 @@ public class EmployeeFactory {
         session.update(updatedUser);
 
         transaction.commit();
-    }
-
-
-    public void findAdministrator() {
-        System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
-        System.out.println("Print All From Administrator from Employee: ");
-        session.createQuery("select e.firstName from Employee e where e.role='Manager'").getResultList().forEach(System.out::println);
-    }
-
-    public void findOperator() {
-        System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
-        System.out.println("Print All From Sellers from Employee: ");
-        session.createQuery("select e.firstName from Employee e where e.role='Seller'").getResultList().forEach(System.out::println);
     }
 
     public int countSalaries() {

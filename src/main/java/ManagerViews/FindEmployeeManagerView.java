@@ -19,11 +19,6 @@ import model.Employee;
 
 public class FindEmployeeManagerView {
     private Employee currentUser;
-    private Computers currentBook;
-
-    public FindEmployeeManagerView(Employee currentUser) {
-        this.currentUser = currentUser;
-    }
 
     public FindEmployeeManagerView() {
     }

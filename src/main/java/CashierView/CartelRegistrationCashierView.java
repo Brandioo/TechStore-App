@@ -49,47 +49,17 @@ public class CartelRegistrationCashierView {
 // value and 10 as amount to increment or decrement by, per step
         // Spinner<Integer> spinner2 = new Spinner<>(0, 100, 10, 10);
 
-//        Label quantityLabel = new Label("Quantity: ");
-//        IntegerField quantityField = new IntegerField();
-//        root1.add(quantityLabel, 1, 6);
-//        root1.add(quantityField, 2, 6);
-//
-//        Label priceLabel = new Label("Price: ");
-//        IntegerField priceField = new IntegerField();
-//        root1.add(priceLabel, 1, 7);
-//        root1.add(priceField, 2, 7);
-
-//
-
         Label employeeIDLabel=new Label("Employees ID: ");
         employeeIDLabel.setTextFill(Color.BLACK);
         employeeIDLabel.setStyle("-fx-font-weight: bold;");
         root1.add(employeeIDLabel,2,9);
         root1.add(spinner1,3,9);
 
-
-//        Label quantityLabel = new Label("Quantity: ");
-//        quantityLabel.setTextFill(Color.web("white"));
-//        quantityLabel.setStyle("-fx-font-weight: bold;");
-//        root1.add(quantityLabel, 1, 6);
-//        root1.add(spinner1,2,6);
-//        TextField quantityField = new TextField();
-//        root1.add(quantityField, 2, 8);
-
         Label clientID=new Label("Client ID: ");
         clientID.setTextFill(Color.BLACK);
         clientID.setStyle("-fx-font-weight: bold;");
         root1.add(clientID,2,11);
         root1.add(spinner2,3,11);
-
-//        Label priceLabel = new Label("Price: ");
-//        priceLabel.setTextFill(Color.web("white"));
-//        priceLabel.setStyle("-fx-font-weight: bold;");
-//        root1.add(quantityLabel, 1, 7);
-//        root1.add(spinner2,2,7);
-//        TextField priceField = new TextField();
-//        root1.add(priceField, 2, 8);
-
 
         Label createdOnLabel = new Label("Created On (Auto Calc. Now): ");
         createdOnLabel.setTextFill(Color.BLACK);
@@ -111,8 +81,6 @@ public class CartelRegistrationCashierView {
 
             @Override
             public void handle(ActionEvent arg0) {
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 CartelFactory cartelFactory = new CartelFactory();
                 ClientFactory clientFactory=new ClientFactory();
@@ -136,12 +104,10 @@ public class CartelRegistrationCashierView {
                     errorAlert.setContentText("Register Computer At Buy Book Section");
                     errorAlert.showAndWait();
                 } else {
-                    //Employee currentEmployee=new Employee();
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The Cartel was registered successfully");
                     successAlert.showAndWait();
                     stage.setScene(new CartelRecordRegistrationCashierView(cartel).execute(stage));
-                    //stage.setScene(new HomeView(currentEmployee).execute(stage));
                     successAlert.close();
 
                 }
@@ -164,7 +130,6 @@ public class CartelRegistrationCashierView {
         mainPane.setTop(menuBar);
 
         Label findEmployeeViewLabel=new Label("Find Employee ID");
-//        findEmployeeViewLabel.setStyle("-fx-font-weight: bold;");
         Menu findEmployeeID=new Menu("", findEmployeeViewLabel);
         findEmployeeViewLabel.setOnMouseClicked(e->{
             FindEmployeeCashiersView findEmployeeView1= new FindEmployeeCashiersView(currentUser);
@@ -175,7 +140,6 @@ public class CartelRegistrationCashierView {
         mainPane.setTop(menuBar);
 
         Label findClientViewLabel=new Label("Find Client ID");
-//        findClientViewLabel.setStyle("-fx-font-weight: bold;");
         Menu findClientID=new Menu("", findClientViewLabel);
         findClientViewLabel.setOnMouseClicked(e->{
             ClientFindingViewCashier clientFindingView= new ClientFindingViewCashier(currentUser);
@@ -184,17 +148,6 @@ public class CartelRegistrationCashierView {
 
         menuBar.getMenus().add(findClientID);
         mainPane.setTop(menuBar);
-//
-//        Label findClientViewLabel=new Label("Find Client ID");
-//        findClientViewLabel.setStyle("-fx-font-weight: bold;");
-//        Menu findClientID=new Menu("", findClientViewLabel);
-//        findClientViewLabel.setOnMouseClicked(e->{
-//            FindClient findEmployeeView1= new FindEmployeeView(currentUser);
-//            stage.setScene(findEmployeeView1.execute(stage));
-//        });
-//
-//        menuBar.getMenus().add(findClientID);
-//        mainPane.setTop(menuBar);
 
         root1.setStyle("-fx-background-image: url('imgg.png')");
         mainPane.setCenter(root1);

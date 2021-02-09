@@ -32,12 +32,6 @@ public class AllCartelRecordView {
         this.currentUser = currentUser;
     }
 
-    private Client currentClient;
-
-    public AllCartelRecordView(Client u){
-        this.currentClient = u;
-    }
-
     private Computers currentComputer;
 
     public AllCartelRecordView(Computers u){

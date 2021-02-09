@@ -1,6 +1,5 @@
 package ComputerView;
 
-import CashierView.BuyOnlineComputerCashierView;
 import ComputerManagementFunctionFactory.ComputerFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +14,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import model.Computers;
-import model.Client;
 import model.Employee;
 import AdministratorViews.AdministratorHomeView;
 
@@ -28,17 +26,12 @@ public class AllComputerView {
         this.currentUser = currentUser;
     }
 
-    private Client currentClient;
-
-    public AllComputerView(Client u){
-        this.currentClient = u;
-    }
-
-    private Computers currentBook;
+    private Computers currentComputer;
 
     public AllComputerView(Computers u){
-        this.currentBook = u;
+        this.currentComputer = u;
     }
+
     public Scene showView(Stage stage) {
 
         VBox root= new VBox();

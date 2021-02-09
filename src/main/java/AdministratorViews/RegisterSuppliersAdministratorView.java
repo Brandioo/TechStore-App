@@ -85,8 +85,6 @@ public class RegisterSuppliersAdministratorView {
                 LocalDateTime createdOn = LocalDateTime.now();
                 Integer quantity = spinner1.getValue();
                 Integer price = spinner2.getValue();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 SupplierFactory supplierFactory = new SupplierFactory();
                 boolean isRegistered = supplierFactory.createSupplierSection(companyName, product, quantity, price, createdOn);

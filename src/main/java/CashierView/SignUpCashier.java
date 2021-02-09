@@ -134,8 +134,6 @@ public class SignUpCashier {
                 String verfiedPassword = verifiedPasswordField.getText();
                 Integer salary = spinner1.getValue();
                 LocalDateTime createdOn = LocalDateTime.now();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 EmployeeFactory employeeFactory = new EmployeeFactory();
                 boolean isRegistered = employeeFactory.signUp(firstName, lastName, dateOfBirth, email, phoneNumber,

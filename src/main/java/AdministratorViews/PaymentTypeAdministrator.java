@@ -50,8 +50,6 @@ public class PaymentTypeAdministrator {
                 Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 successAlert.setHeaderText("Success Click");
                 successAlert.setContentText("The Credit Card Payment Section Is Clicked");
-//                    HomeView homeView=new HomeView(loggedIn);
-//                    stage.setScene(homeView.execute(stage));
                 successAlert.showAndWait();
                 BuyOnlineComputerView buyBookView=new BuyOnlineComputerView();
                 buyBookView.execute(stage);
@@ -62,7 +60,6 @@ public class PaymentTypeAdministrator {
 
         Button cashPaymentButton = new Button("Cash Payment");
         cashPaymentButton.setTextFill(Color.DEEPSKYBLUE);
-        //loginButton.setStyle("-fx-font-weight: bold;");
         cashPaymentButton.setId("cashPaymentButton-button");
         cashPaymentButton.setStyle("-fx-background-color:#000000;");
         HBox h1 = new HBox();
@@ -75,8 +72,6 @@ public class PaymentTypeAdministrator {
                 Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 successAlert.setHeaderText("Success Click");
                 successAlert.setContentText("The Cash Payment Section Is Clicked");
-//                    HomeView homeView=new HomeView(loggedIn);
-//                    stage.setScene(homeView.execute(stage));
                 BuyComputerView buyBookView=new BuyComputerView();
                 buyBookView.execute(stage);
                 successAlert.showAndWait();
@@ -102,7 +97,7 @@ public class PaymentTypeAdministrator {
         root.setStyle("-fx-background-image: url('cash.png')");
         mainPane.setCenter(root);
         Scene scene = new Scene(mainPane, 994, 342);
-        // scene.getStylesheets().add("style.css");
+         scene.getStylesheets().add("style.css");
         stage.setTitle("Payment");
         return scene;
     }

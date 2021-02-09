@@ -187,7 +187,6 @@ public class AdministratorHomeView {
         });
 
         MenuItem getAllSuppliers = new MenuItem("-Get All Suppliers Info-");
-//        root.getChildren().add(getAllUser);
 
         getAllSuppliers.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -237,14 +236,11 @@ public class AdministratorHomeView {
         Button buyComputer = new Button("-Buy Computer-");
         buyComputer.setStyle("-fx-font-weight: bold;");
         root1.add(buyComputer, 2, 3);
-//        root.getChildren().add(getAllUser);
 
         buyComputer.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
             public void handle(ActionEvent arg0) {
-//                VendingMachine vendingMachine=new VendingMachine();
-//                vendingMachine.start();
                 Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 successAlert.setHeaderText("Buying Computer");
                 successAlert.showAndWait();

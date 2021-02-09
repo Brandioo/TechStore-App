@@ -39,7 +39,7 @@ public class CartelRecordRegistrationCashierView {
         root1.setAlignment(Pos.TOP_CENTER);
 
 
-        Menu userMenu = new Menu("User Control");
+        Menu userMenu = new Menu("Cartel Control");
 //        userMenu.setStyle("-fx-font-weight: bold;");
 
 //        Label priceLabel = new Label("Price: ");
@@ -250,19 +250,7 @@ public class CartelRecordRegistrationCashierView {
         menuBar.getMenus().add(userMenu);
         mainPane.setTop(menuBar);
 
-//
-//        Label findClientViewLabel=new Label("Find Client ID");
-//        findClientViewLabel.setStyle("-fx-font-weight: bold;");
-//        Menu findClientID=new Menu("", findClientViewLabel);
-//        findClientViewLabel.setOnMouseClicked(e->{
-//            FindClient findEmployeeView1= new FindEmployeeView(currentUser);
-//            stage.setScene(findEmployeeView1.execute(stage));
-//        });
-//
-//        menuBar.getMenus().add(findClientID);
-//        mainPane.setTop(menuBar);
-
-        root1.setStyle("-fx-background-image: url('img_17.png')");
+        root1.setStyle("-fx-background-image: url('img17.png')");
         mainPane.setCenter(root1);
         Scene scene = new Scene(mainPane, 960, 350);
         scene.getStylesheets().add("style.css");

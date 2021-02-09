@@ -23,10 +23,6 @@ public class BuyComputerCashierView {
     public BuyComputerCashierView(Employee currentUser) {
         this.currentUser = currentUser;
     }
-//    public BookFindingView(Book currentBook) {
-//        this.currentBook = currentBook;
-//    }
-
 
     public BuyComputerCashierView() {
     }
@@ -61,9 +57,6 @@ public class BuyComputerCashierView {
             @Override
             public void handle(ActionEvent arg0) {
                 String isbn = computerISBNField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
-
 
                 ComputerFactory computerFactory = new ComputerFactory();
                 Computers findComputer = computerFactory.findComputersByIsbn(isbn);
@@ -80,7 +73,6 @@ public class BuyComputerCashierView {
                     successAlert.setContentText("The Credentials are okay");
                     findComputer.setQuantity(findComputer.getQuantity()-1);
                     computerFactory.editComputers(findComputer);
-//                    computerFactory.editBook(findComputer);
                     stage.setScene(new CartelRegistrationView(findComputer).execute(stage));
                     if (findComputer.getQuantity() <= 5) {
                         successAlert.setContentText("Computer Is Found..." + "\n"

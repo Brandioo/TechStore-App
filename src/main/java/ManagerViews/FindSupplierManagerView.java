@@ -19,11 +19,6 @@ import model.Supplier;
 
 public class FindSupplierManagerView {
     private Employee currentUser;
-    private Computers currentBook;
-
-    public FindSupplierManagerView(Employee currentUser) {
-        this.currentUser = currentUser;
-    }
 
     public FindSupplierManagerView() {
     }

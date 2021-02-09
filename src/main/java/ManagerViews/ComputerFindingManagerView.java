@@ -28,10 +28,6 @@ public class ComputerFindingManagerView {
     public ComputerFindingManagerView(Employee currentUser) {
         this.currentUser = currentUser;
     }
-//    public BookFindingView(Book currentBook) {
-//        this.currentBook = currentBook;
-//    }
-
 
     public ComputerFindingManagerView() {
     }

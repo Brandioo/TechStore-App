@@ -19,7 +19,7 @@ import AdministratorViews.AdministratorHomeView;
 
 public class FindEmployeeView {
     private Employee currentUser;
-    private Computers currentBook;
+    private Computers currentComputer;
 
     public FindEmployeeView(Employee currentUser) {
         this.currentUser = currentUser;
@@ -58,9 +58,6 @@ public class FindEmployeeView {
             @Override
             public void handle(ActionEvent arg0) {
                 String employeeName = employeeNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
-
                 EmployeeFactory employeeFactory = new EmployeeFactory();
                 Employee findEmployee = employeeFactory.findEmployeeByName(employeeName);
 
@@ -101,10 +98,9 @@ public class FindEmployeeView {
         mainPane.setTop(menuBar);
 
         Label cartelRegistrationView = new Label("Cartel Registration View");
-//        cartelRegistrationView.setStyle("-fx-font-weight: bold;");
         Menu cartelRegistration = new Menu("", cartelRegistrationView);
         cartelRegistrationView.setOnMouseClicked(e -> {
-            CartelRegistrationView cartelRegistrationView1 = new CartelRegistrationView(currentBook);
+            CartelRegistrationView cartelRegistrationView1 = new CartelRegistrationView(currentComputer);
             stage.setScene(cartelRegistrationView1.execute(stage));
         });
 

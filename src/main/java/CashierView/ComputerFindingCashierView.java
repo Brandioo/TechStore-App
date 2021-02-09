@@ -66,8 +66,6 @@ public class ComputerFindingCashierView {
             @Override
             public void handle(ActionEvent arg0) {
                 String computerName = computerNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 ComputerFactory computerFactory = new ComputerFactory();
                 Computers findComputer = computerFactory.findComputersByName(computerName);
@@ -99,7 +97,6 @@ public class ComputerFindingCashierView {
         MenuBar menuBar = new MenuBar();
 
         Label backLabel = new Label("Home View");
-//        backLabel.setStyle("-fx-font-weight: bold;");
         Menu back = new Menu("", backLabel);
         backLabel.setOnMouseClicked(e -> {
             CashierHomeView homeView = new CashierHomeView(currentUser);

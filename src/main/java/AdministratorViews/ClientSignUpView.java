@@ -82,7 +82,6 @@ public class ClientSignUpView {
                 String phoneNumber = phoneNumberField.getText();
                 String address = addressField.getText();
                 LocalDateTime createdOn = LocalDateTime.now();
-                //String description = descriptionArea.getText();
                 // boolean isRememberMe = remember.isSelected();
 
                 ClientFactory clientFactory = new ClientFactory();

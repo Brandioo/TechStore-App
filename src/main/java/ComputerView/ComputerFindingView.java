@@ -68,8 +68,6 @@ public class ComputerFindingView {
             @Override
             public void handle(ActionEvent arg0) {
                 String computerName = computerNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 ComputerFactory computerFactory = new ComputerFactory();
                 Computers findComputer = computerFactory.findComputersByName(computerName);
@@ -87,7 +85,7 @@ public class ComputerFindingView {
                             + "Name: " + findComputer.getComputerName() + "\n"
                             + "Genere: " + findComputer.getComputerType() + "\n"
                             + "Quantity: " + findComputer.getQuantity() + "\n"
-                            + "Price: " + findComputer.getPrice() + "\n"
+                            + "Price: " + findComputer.getPrice() + " $ "+"\n"
                             + "ISBN: (ISBN Code Used For Buying)->" + findComputer.getIsbn() + "\n");
                     successAlert.showAndWait();
                     successAlert.close();

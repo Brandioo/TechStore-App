@@ -22,10 +22,6 @@ public class SupplierFactory {
     public SupplierFactory() {
     }
 
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
     public String findAllSuppliers() {
         System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
         System.out.println("Print All From Suppliers: ");
@@ -94,33 +90,11 @@ public class SupplierFactory {
 
     }
 
-
-//    public boolean updateBookSection(Book book, int position) {
-//
-//        // the data are okay
-//        // create the user
-//        //this.book.add(book);
-//        editBook(book);
-//        this.books.set(position,book);
-//        return true;
-//
-//    }
-
-
-
     public Supplier findSupplierByID(int Id) {
         System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");
         System.out.println("Print All From Supplier by id: ");
         return session.find(Supplier.class, Id);
     }
-
-//    public void editBook(final Book updatedBook, int postion) {
-//        Transaction transaction = session.beginTransaction();
-//
-//        session.update(String.valueOf(postion), updatedBook);
-//
-//        transaction.commit();
-//    }
 
     public int countCost() {
 

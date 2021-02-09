@@ -68,8 +68,6 @@ public class AdministratorLoginView {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The Administrator was logged in successfully");
                     successAlert.setContentText("Welcome "+loggedIn.getFirstName()+"!");
-//                    HomeView homeView=new HomeView(loggedIn);
-//                    stage.setScene(homeView.execute(stage));
                     successAlert.showAndWait();
                     stage.setScene(new AdministratorHomeView(loggedIn).execute(stage));
                     successAlert.close();

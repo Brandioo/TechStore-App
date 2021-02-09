@@ -66,47 +66,17 @@ public class ComputerStockRegistrationCashierView {
 // value and 10 as amount to increment or decrement by, per step
         // Spinner<Integer> spinner2 = new Spinner<>(0, 100, 10, 10);
 
-//        Label quantityLabel = new Label("Quantity: ");
-//        IntegerField quantityField = new IntegerField();
-//        root1.add(quantityLabel, 1, 6);
-//        root1.add(quantityField, 2, 6);
-//
-//        Label priceLabel = new Label("Price: ");
-//        IntegerField priceField = new IntegerField();
-//        root1.add(priceLabel, 1, 7);
-//        root1.add(priceField, 2, 7);
-
-//
-
         Label quantityLabel=new Label("Quantity:    ");
         quantityLabel.setTextFill(Color.WHITE);
         quantityLabel.setStyle("-fx-font-weight: bold;");
         root1.add(quantityLabel,1,9);
         root1.add(spinner1,4,9);
 
-
-//        Label quantityLabel = new Label("Quantity: ");
-//        quantityLabel.setTextFill(Color.web("white"));
-//        quantityLabel.setStyle("-fx-font-weight: bold;");
-//        root1.add(quantityLabel, 1, 6);
-//        root1.add(spinner1,2,6);
-//        TextField quantityField = new TextField();
-//        root1.add(quantityField, 2, 8);
-
         Label priceLabel=new Label("Price:    ");
         priceLabel.setTextFill(Color.WHITE);
         priceLabel.setStyle("-fx-font-weight: bold;");
         root1.add(priceLabel,1,11);
         root1.add(spinner2,4,11);
-
-//        Label priceLabel = new Label("Price: ");
-//        priceLabel.setTextFill(Color.web("white"));
-//        priceLabel.setStyle("-fx-font-weight: bold;");
-//        root1.add(quantityLabel, 1, 7);
-//        root1.add(spinner2,2,7);
-//        TextField priceField = new TextField();
-//        root1.add(priceField, 2, 8);
-
 
         Label createdOnLabel = new Label("Creation (Auto Calc. Now): ");
         createdOnLabel.setTextFill(Color.WHITE);

@@ -21,10 +21,6 @@ import java.time.LocalDateTime;
 
 public class RegisterSuppliersManagerView {
     private Employee currentUser;
-    private Computers currentBook;
-    public RegisterSuppliersManagerView(Employee currentUser) {
-        this.currentUser = currentUser;
-    }
 
     public RegisterSuppliersManagerView() {
     }

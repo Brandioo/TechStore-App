@@ -22,28 +22,12 @@ public class CartelFactory {
     public CartelFactory() {
     }
 
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
     public void createCartel(final Cartel cartel) {
         Transaction transaction = session.beginTransaction();
 
         session.save(cartel);
 
         transaction.commit();
-    }
-
-
-    public boolean createCartelSection(LocalDateTime createdOn, Client clientID, Employee employeeID) {
-
-        // the data are okay
-        // create the user
-        Cartel cartel = new Cartel(createdOn, clientID, employeeID);
-        //this.book.add(book);
-        createCartel(cartel);
-        return true;
-
     }
 
     public String findAllCartels() {

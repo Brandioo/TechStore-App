@@ -209,17 +209,6 @@ public class ManagerHomeView {
         countOptions.getItems().addAll(findCartelsByEmployees);
         mainPane.setTop(menuBar);
 
-//        MenuItem searchSupply = new MenuItem("-Find What Suppliers Offer-");
-//        searchSupply.setStyle("-fx-font-weight: bold;");
-//        searchSupply.setId("searchSupply-button");
-//        searchSupply.setStyle("-fx-background-color:#01FFFF;");
-//        searchSupply.setOnAction(e->{
-//            stage.setScene(new FindWhatSuppliersOffer().execute(stage));
-//        });
-//
-//        countOptions.getItems().addAll(searchSupply);
-//        mainPane.setTop(menuBar);
-
         createMenu.getItems().addAll(getVerificationStatus, createSupplierButton, createComputerButton);
 
         menuBar.getMenus().add(createMenu);

@@ -49,8 +49,6 @@ public class PaymentTypeCashier {
                 Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 successAlert.setHeaderText("Success Click");
                 successAlert.setContentText("The Credit Card Payment Section Is Clicked");
-//                    HomeView homeView=new HomeView(loggedIn);
-//                    stage.setScene(homeView.execute(stage));
                 successAlert.showAndWait();
                 BuyOnlineComputerCashierView buyBookView=new BuyOnlineComputerCashierView();
                 buyBookView.execute(stage);
@@ -61,7 +59,6 @@ public class PaymentTypeCashier {
 
         Button cashPaymentButton = new Button("Cash Payment");
         cashPaymentButton.setTextFill(Color.DEEPSKYBLUE);
-        //loginButton.setStyle("-fx-font-weight: bold;");
         cashPaymentButton.setId("cashPaymentButton-button");
         cashPaymentButton.setStyle("-fx-background-color:#000000;");
         HBox h1 = new HBox();
@@ -74,8 +71,6 @@ public class PaymentTypeCashier {
                 Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 successAlert.setHeaderText("Success Click");
                 successAlert.setContentText("The Cash Payment Section Is Clicked");
-//                    HomeView homeView=new HomeView(loggedIn);
-//                    stage.setScene(homeView.execute(stage));
                 BuyComputerCashierView buyBookView=new BuyComputerCashierView();
                 buyBookView.execute(stage);
                 successAlert.showAndWait();
