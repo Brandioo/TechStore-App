@@ -14,7 +14,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Client;
 import model.Employee;
-import AdministratorViews.AdministratorHomeView;
 
 import java.util.List;
 
@@ -57,6 +56,7 @@ public class AllClientView {
 
                 currentClient.setFirstName(newFirstName);
                 clientFactory.editClient(currentClient);
+                clientFactory.deleteClient(currentClient);
             }
 
         });
@@ -78,6 +78,7 @@ public class AllClientView {
 
                 currentClient.setLastName(newLastName);
                 clientFactory.editClient(currentClient);
+                clientFactory.deleteClient(currentClient);
             }
 
         });
@@ -97,6 +98,7 @@ public class AllClientView {
 
                 currentClient.setEmail(newEmail);
                 clientFactory.editClient(currentClient);
+                clientFactory.deleteClient(currentClient);
             }
 
         });
@@ -116,6 +118,7 @@ public class AllClientView {
 
                 currentClient.setPhoneNumber(newPhoneNumber);
                 clientFactory.editClient(currentClient);
+                clientFactory.deleteClient(currentClient);
             }
 
         });
@@ -135,6 +138,7 @@ public class AllClientView {
 
                 currentClient.setAddress(newRole);
                 clientFactory.editClient(currentClient);
+                clientFactory.deleteClient(currentClient);
             }
 
         });
@@ -150,6 +154,14 @@ public class AllClientView {
             AdministratorHomeView hv = new AdministratorHomeView(currentUser);
             stage.setScene(hv.execute(stage));
         });
+
+//        Button deleteClientButton = new Button("-Delete Client Button-");
+//        deleteClientButton.setOnAction(e -> {
+//            TableColumn.CellEditEvent t = null;
+//            Client currentClient= (Client) t.getTableView().getItems().get(t.getTablePosition().getRow());
+//            ClientFactory clientFactory1=new ClientFactory();
+//            clientFactory1.deleteClient(currentClient);
+//        });
 
         root.getChildren().addAll(table, save);
 

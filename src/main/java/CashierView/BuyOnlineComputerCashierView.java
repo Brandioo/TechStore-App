@@ -81,7 +81,7 @@ public class BuyOnlineComputerCashierView {
                     successAlert.setContentText("The Credentials are okay");
                     findComputer.setQuantity(findComputer.getQuantity()-1);
                     computerFactory.editComputers(findComputer);
-                    stage.setScene(new CartelRegistrationView(findComputer).execute(stage));
+                    stage.setScene(new CartelRegistrationCashierView(findComputer).execute(stage));
                     if (findComputer.getQuantity() <= 5) {
                         successAlert.setContentText("Computer Is Found..." + "\n"
                                 + "Time To Buy New Computers ! " + "\n"

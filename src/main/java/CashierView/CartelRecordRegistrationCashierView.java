@@ -237,7 +237,7 @@ public class CartelRecordRegistrationCashierView {
                 CartelFactory cartelFactory = new CartelFactory();
                 Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                 successAlert.setHeaderText("All Cartels Information");
-                successAlert.setContentText(cartelFactory.findAllCartels());
+                successAlert.setContentText(String.valueOf(cartelFactory.getLastID()));
                 successAlert.showAndWait();
                 System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
             }

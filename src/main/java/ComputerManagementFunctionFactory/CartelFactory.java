@@ -74,4 +74,14 @@ public class CartelFactory {
         return cartels;
 
     }
+
+    public int getLastID() {
+
+        Query query = session.createQuery("select max(cartelId) from Cartel");
+        Integer cartels = Math.toIntExact((Integer) query.getSingleResult());
+
+        session.close();
+        return cartels;
+
+    }
 }

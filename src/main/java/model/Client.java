@@ -39,6 +39,10 @@ public class Client {
         this.createdOn = createdOn;
     }
 
+    public Client(String firstName) {
+        this.firstName = firstName;
+    }
+
     public Client() {
 
     }

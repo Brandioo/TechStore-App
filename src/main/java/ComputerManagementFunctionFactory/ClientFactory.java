@@ -95,4 +95,15 @@ public class ClientFactory {
         transaction.commit();
 
     }
+
+    public void deleteClient(Client client) {
+        session = HibernateUtils.getSessionFactory().openSession();
+
+        Transaction transaction = session.beginTransaction();
+
+        session.delete(client);
+
+        transaction.commit();
+
+    }
 }

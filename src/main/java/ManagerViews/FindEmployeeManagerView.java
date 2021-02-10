@@ -53,8 +53,6 @@ public class FindEmployeeManagerView {
             @Override
             public void handle(ActionEvent arg0) {
                 String employeeName = employeeNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
                 EmployeeFactory employeeFactory = new EmployeeFactory();
                 Employee findEmployee = employeeFactory.findEmployeeByName(employeeName);
