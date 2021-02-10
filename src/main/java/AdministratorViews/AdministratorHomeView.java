@@ -301,9 +301,9 @@ public class AdministratorHomeView {
             int sum = 0;
             sum = employeeFactory.countSalaries() + supplierFactory.countCost();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Sum Of Salaries " + employeeFactory.countSalaries() + " $ " + "\n" +
-                    "Cost Of Products From Suppliers " + supplierFactory.countCost() + " $ " + "\n" +
-                    "All Cost For This Month Is " + sum + " $ ");
+            alert.setContentText("Sum Of Salaries-" + employeeFactory.countSalaries() + " $ " + "\n" +
+                    "Cost Of Products From Suppliers-" + supplierFactory.countCost() + " $ " + "\n" +
+                    "All Cost For This Month Is-" + sum + " $ ");
             alert.setHeaderText("The Cost Of Business Information");
             alert.showAndWait();
 

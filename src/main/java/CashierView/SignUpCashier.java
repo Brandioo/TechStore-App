@@ -28,6 +28,12 @@ public class SignUpCashier {
     public SignUpCashier() {
     }
 
+    private static boolean isValidOrNot(String password)
+    {
+        return password.length()>=8 && password.matches(".*\\d.*\\d.*");
+        //&& password.matches("^[a-zA-Z0-9]$");
+    }
+
     public Scene execute(Stage stage) {
         GridPane root = new GridPane();
         root.setHgap(10);
@@ -51,7 +57,7 @@ public class SignUpCashier {
         Label dateOfBirthLabel = new Label("DateOfBirth (yyyy-mm-dd):");
         dateOfBirthLabel.setTextFill(Color.BLACK);
         dateOfBirthLabel.setStyle("-fx-font-weight: bold;");
-        TextField dateOfBirthField = new TextField();
+        DatePicker dateOfBirthField = new DatePicker();
         root.add(dateOfBirthLabel, 1, 4);
         root.add(dateOfBirthField, 2, 4);
 
@@ -74,8 +80,6 @@ public class SignUpCashier {
         professionLabel.setStyle("-fx-font-weight: bold;");
         root.add(professionLabel, 1, 7);
         ComboBox professionDropDown = new ComboBox();
-        professionDropDown.getItems().add("Administrator");
-        professionDropDown.getItems().add("Manager");
         professionDropDown.getItems().add("Cashier");
         root.add(professionDropDown, 2, 7);
 
@@ -125,7 +129,7 @@ public class SignUpCashier {
             public void handle(ActionEvent arg0) {
                 String firstName = firstNameField.getText();
                 String lastName = lastNameField.getText();
-                LocalDate dateOfBirth = LocalDate.parse(dateOfBirthField.getText());
+                LocalDate dateOfBirth = dateOfBirthField.getValue();
                 String email = emailField.getText();
                 String phoneNumber = phoneNumberField.getText();
                 String role = (String) professionDropDown.getValue();
@@ -138,17 +142,19 @@ public class SignUpCashier {
                 EmployeeFactory employeeFactory = new EmployeeFactory();
                 boolean isRegistered = employeeFactory.signUp(firstName, lastName, dateOfBirth, email, phoneNumber,
                         role, user, password, verfiedPassword, salary, createdOn);
-                if (!isRegistered) {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                    errorAlert.setHeaderText("There was an error");
-                    errorAlert.setContentText("The password and verify password don't match");
-                    errorAlert.showAndWait();
-                } else {
+
+                if (isRegistered) {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The user was registered successfully");
                     successAlert.showAndWait();
                     stage.setScene(new CashierLoginView().showView(stage));
                     successAlert.close();
+                } else {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setHeaderText("There was an error");
+                    errorAlert.setContentText("You have not inputted all the requirements correctly. "+"\n"+ "OR" +"\n"+
+                            "Your password doesnt match with verified password.");
+                    errorAlert.showAndWait();
                 }
 
             }
@@ -175,7 +181,7 @@ public class SignUpCashier {
         Scene scene = new Scene(mainPane, 1400, 1400);
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
-        stage.setTitle("Sign up users!");
+        stage.setTitle("Sign up Cashiers!");
         stage.show();
 
         return scene;

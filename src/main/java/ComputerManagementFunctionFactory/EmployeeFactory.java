@@ -93,7 +93,7 @@ public class EmployeeFactory {
     public boolean signUp(String firstName, String lastName, LocalDate dateOfBirth, String email,
                           String phoneNumber, String role, String user, String password, String verifiedPassword,
                           Integer salary, LocalDateTime createdOn) {
-        if (password.equals(verifiedPassword)) {
+        if (password.equals(verifiedPassword) && password.length()>=8) {
             // the data are okay
             // create the user
             Employee employee = new Employee( firstName, lastName, dateOfBirth, email, phoneNumber, role
