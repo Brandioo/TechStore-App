@@ -6,8 +6,8 @@ import model.Employee;
 import java.util.Optional;
 
 public interface StatusCategory {
-    void start(Stage primaryStage) throws Exception;
+    void start(Stage primaryStage) throws ExceptionExample;
 
-    Optional<Employee> getAction() throws Exception;
+    Optional<Employee> getAction() throws ExceptionExample;
 
 }
