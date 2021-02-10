@@ -80,7 +80,15 @@ public class CartelFactory {
         Query query = session.createQuery("select max(cartelId) from Cartel");
         Integer cartels = Math.toIntExact((Integer) query.getSingleResult());
 
-        session.close();
+        return cartels;
+
+    }
+
+    public int getFirstID() {
+
+        Query query = session.createQuery("select min(cartelId) from Cartel");
+        Integer cartels = Math.toIntExact((Integer) query.getSingleResult());
+
         return cartels;
 
     }

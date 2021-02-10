@@ -107,7 +107,15 @@ public class ComputerFactory {
         Query query = session.createQuery("select max(computerID) from Computers ");
         Integer computers = Math.toIntExact((Integer) query.getSingleResult());
 
-        session.close();
+        return computers;
+
+    }
+
+    public int getFirstID() {
+
+        Query query = session.createQuery("select min(computerID) from Computers ");
+        Integer computers = Math.toIntExact((Integer) query.getSingleResult());
+
         return computers;
 
     }

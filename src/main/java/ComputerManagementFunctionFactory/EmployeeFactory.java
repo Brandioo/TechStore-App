@@ -124,4 +124,22 @@ public class EmployeeFactory {
         return cartels;
 
     }
+
+    public int getLastID() {
+
+        Query query = session.createQuery("select max(employeesId) from Employee");
+        Integer employees = Math.toIntExact((Integer) query.getSingleResult());
+
+        return employees;
+
+    }
+
+    public int getFirstID() {
+
+        Query query = session.createQuery("select min(employeesId) from Employee ");
+        Integer employeeID = Math.toIntExact((Integer) query.getSingleResult());
+
+        return employeeID;
+
+    }
 }

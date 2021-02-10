@@ -106,4 +106,22 @@ public class ClientFactory {
         transaction.commit();
 
     }
+
+    public int getLastID() {
+
+        Query query = session.createQuery("select max(clientId) from Client");
+        Integer client = Math.toIntExact((Integer) query.getSingleResult());
+
+        return client;
+
+    }
+
+    public int getFirstID() {
+
+        Query query = session.createQuery("select min(clientId) from Client");
+        Integer clientId = Math.toIntExact((Integer) query.getSingleResult());
+
+        return clientId;
+
+    }
 }

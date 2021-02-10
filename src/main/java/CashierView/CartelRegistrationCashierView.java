@@ -4,9 +4,7 @@ import CashierView.CartelRecordRegistrationCashierView;
 import CashierView.FindEmployeeCashiersView;
 import CashierView.PaymentTypeCashier;
 import ClientView.ClientFindingViewCashier;
-import ComputerManagementFunctionFactory.CartelFactory;
-import ComputerManagementFunctionFactory.ClientFactory;
-import ComputerManagementFunctionFactory.EmployeeFactory;
+import ComputerManagementFunctionFactory.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -19,6 +17,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Cartel;
+import model.CartelRecord;
 import model.Computers;
 import model.Employee;
 
@@ -33,6 +32,9 @@ public class CartelRegistrationCashierView {
     }
 
     public Scene execute(Stage stage) {
+        ClientFactory clientFactory=new ClientFactory();
+        EmployeeFactory employeeFactory=new EmployeeFactory();
+
         GridPane root1 = new GridPane();
         root1.setHgap(10);
         root1.setVgap(10);
@@ -40,9 +42,10 @@ public class CartelRegistrationCashierView {
         root1.setAlignment(Pos.BOTTOM_CENTER);
 
         // Creates an integer spinner with 1 as min, 10 as max and 2 as initial value
-        Spinner<Integer> spinner1 = new Spinner<>(1, 31, 10);
+        Spinner<Integer> spinner1 = new Spinner<>(employeeFactory.getFirstID(), employeeFactory.getLastID(),employeeFactory.getFirstID());
 
-        Spinner<Integer> spinner2 = new Spinner<>(1, 1000, 7);
+        Spinner<Integer> spinner2 = new Spinner<>(clientFactory.getFirstID(), clientFactory.getLastID(), employeeFactory.getLastID());
+
 
 
 // Creates an integer spinner with 0 as min, 100 as max and 10 as initial
@@ -83,9 +86,12 @@ public class CartelRegistrationCashierView {
             public void handle(ActionEvent arg0) {
 
                 CartelFactory cartelFactory = new CartelFactory();
-                ClientFactory clientFactory=new ClientFactory();
-                EmployeeFactory employeeFactory=new EmployeeFactory();
                 Cartel cartel=new Cartel();
+                CartelRecordFactory cartelRecordFactory = new CartelRecordFactory();
+                ClientFactory clientFactory = new ClientFactory();
+                EmployeeFactory employeeFactory = new EmployeeFactory();
+                CartelRecord cartelRecord = new CartelRecord();
+                ComputerFactory computerFactory=new ComputerFactory();
 
                 Integer clientID = spinner2.getValue();
                 cartel.setClient(clientFactory.findClientByID(clientID));

@@ -64,9 +64,9 @@ public class CartelRecordRegistrationCashierView {
 
         Spinner<Integer> spinner5 = new Spinner<>(1, 59, 0);
 
-        Spinner<Integer> spinner6 = new Spinner<>(1, computerFactory.getLastID(), 5);
+        Spinner<Integer> spinner6 = new Spinner<>(1, computerFactory.getLastID(), 1);
 
-        Spinner<Integer> spinner7 = new Spinner<>(1, cartelFactory.getLastID(), 24);
+        Spinner<Integer> spinner7 = new Spinner<>(1, cartelFactory.getLastID(), 1);
 
         Label yearLabel = new Label("Return Year:");
         yearLabel.setTextFill(Color.DEEPSKYBLUE);
@@ -138,6 +138,8 @@ public class CartelRecordRegistrationCashierView {
                 ClientFactory clientFactory = new ClientFactory();
                 EmployeeFactory employeeFactory = new EmployeeFactory();
                 CartelRecord cartelRecord = new CartelRecord();
+                ComputerFactory computerFactory=new ComputerFactory();
+                CartelFactory cartelFactory = new CartelFactory();
 
                 LocalDateTime dataStarted = LocalDateTime.now();
                 cartelRecord.setDataStarted(dataStarted);
@@ -171,7 +173,7 @@ public class CartelRecordRegistrationCashierView {
                     successAlert.setHeaderText("Success");
                     successAlert.setContentText("The Cartel Record was registered successfully");
                     successAlert.showAndWait();
-                    stage.setScene(new AdministratorHomeView(currentUser).execute(stage));
+                    stage.setScene(new CashierHomeView(currentUser).execute(stage));
                     successAlert.close();
                 }  else {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
