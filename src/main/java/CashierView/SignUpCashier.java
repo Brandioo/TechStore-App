@@ -40,21 +40,21 @@ public class SignUpCashier {
         root.setVgap(10);
         root.setPadding(new Insets(10, 10, 10, 10));
 
-        Label firstNameLabel = new Label("First Name");
+        Label firstNameLabel = new Label("First Name: ");
         firstNameLabel.setTextFill(Color.BLACK);
         firstNameLabel.setStyle("-fx-font-weight: bold;");
         TextField firstNameField = new TextField();
         root.add(firstNameLabel, 1, 2);
         root.add(firstNameField, 2, 2);
 
-        Label lastNameLabel = new Label("Last Name");
+        Label lastNameLabel = new Label("Last Name: ");
         lastNameLabel.setTextFill(Color.BLACK);
         lastNameLabel.setStyle("-fx-font-weight: bold;");
         TextField lastNameField = new TextField();
         root.add(lastNameLabel, 1, 3);
         root.add(lastNameField, 2, 3);
 
-        Label dateOfBirthLabel = new Label("DateOfBirth (yyyy-mm-dd):");
+        Label dateOfBirthLabel = new Label("DateOfBirth: ");
         dateOfBirthLabel.setTextFill(Color.BLACK);
         dateOfBirthLabel.setStyle("-fx-font-weight: bold;");
         DatePicker dateOfBirthField = new DatePicker();
@@ -75,7 +75,7 @@ public class SignUpCashier {
         root.add(phoneNumberLabel, 1, 6);
         root.add(phoneNumberField, 2, 6);
 
-        Label professionLabel = new Label("Role");
+        Label professionLabel = new Label("Role: ");
         professionLabel.setTextFill(Color.BLACK);
         professionLabel.setStyle("-fx-font-weight: bold;");
         root.add(professionLabel, 1, 7);
@@ -112,7 +112,7 @@ public class SignUpCashier {
         root.add(salaryLabel,1,11);
         root.add(spinner1,2,11);
 
-        Label descriptionLabel = new Label("Description");
+        Label descriptionLabel = new Label("Description: ");
         descriptionLabel.setTextFill(Color.BLACK);
         descriptionLabel.setStyle("-fx-font-weight: bold;");
         root.add(descriptionLabel, 1, 12);
@@ -153,7 +153,8 @@ public class SignUpCashier {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");
                     errorAlert.setContentText("You have not inputted all the requirements correctly. "+"\n"+ "OR" +"\n"+
-                            "Your password doesnt match with verified password.");
+                            "Your password doesnt match with verified password." +"\n"+"OR"+"\n"+
+                            "Password length should be bigger than 8!");
                     errorAlert.showAndWait();
                 }
 

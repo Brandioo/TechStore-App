@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 public class SignUpManagers {
     private Employee currentUser;
     private Computers currentBook;
+
     public SignUpManagers(Employee currentUser) {
         this.currentUser = currentUser;
     }
@@ -28,9 +29,8 @@ public class SignUpManagers {
     public SignUpManagers() {
     }
 
-    private static boolean isValidOrNot(String password)
-    {
-        return password.length()>=8 && password.matches(".*\\d.*\\d.*");
+    private static boolean isValidOrNot(String password) {
+        return password.length() >= 8 && password.matches(".*\\d.*\\d.*");
         //&& password.matches("^[a-zA-Z0-9]$");
     }
 
@@ -40,21 +40,21 @@ public class SignUpManagers {
         root.setVgap(10);
         root.setPadding(new Insets(10, 10, 10, 10));
 
-        Label firstNameLabel = new Label("First Name");
+        Label firstNameLabel = new Label("First Name: ");
         firstNameLabel.setTextFill(Color.BLACK);
         firstNameLabel.setStyle("-fx-font-weight: bold;");
         TextField firstNameField = new TextField();
         root.add(firstNameLabel, 1, 2);
         root.add(firstNameField, 2, 2);
 
-        Label lastNameLabel = new Label("Last Name");
+        Label lastNameLabel = new Label("Last Name: ");
         lastNameLabel.setTextFill(Color.BLACK);
         lastNameLabel.setStyle("-fx-font-weight: bold;");
         TextField lastNameField = new TextField();
         root.add(lastNameLabel, 1, 3);
         root.add(lastNameField, 2, 3);
 
-        Label dateOfBirthLabel = new Label("DateOfBirth (yyyy-mm-dd):");
+        Label dateOfBirthLabel = new Label("DateOfBirth: ");
         dateOfBirthLabel.setTextFill(Color.BLACK);
         dateOfBirthLabel.setStyle("-fx-font-weight: bold;");
         DatePicker dateOfBirthField = new DatePicker();
@@ -75,7 +75,7 @@ public class SignUpManagers {
         root.add(phoneNumberLabel, 1, 6);
         root.add(phoneNumberField, 2, 6);
 
-        Label professionLabel = new Label("Role");
+        Label professionLabel = new Label("Role: ");
         professionLabel.setTextFill(Color.BLACK);
         professionLabel.setStyle("-fx-font-weight: bold;");
         root.add(professionLabel, 1, 7);
@@ -106,13 +106,13 @@ public class SignUpManagers {
 
         Spinner<Integer> spinner1 = new Spinner<>(1, 1000, 1);
 
-        Label salaryLabel=new Label("Salary: ");
+        Label salaryLabel = new Label("Salary: ");
         salaryLabel.setTextFill(Color.BLACK);
         salaryLabel.setStyle("-fx-font-weight: bold;");
-        root.add(salaryLabel,1,11);
-        root.add(spinner1,2,11);
+        root.add(salaryLabel, 1, 11);
+        root.add(spinner1, 2, 11);
 
-        Label descriptionLabel = new Label("Description");
+        Label descriptionLabel = new Label("Description: ");
         descriptionLabel.setTextFill(Color.BLACK);
         descriptionLabel.setStyle("-fx-font-weight: bold;");
         root.add(descriptionLabel, 1, 12);
@@ -134,7 +134,7 @@ public class SignUpManagers {
                 String phoneNumber = phoneNumberField.getText();
                 String role = (String) professionDropDown.getValue();
                 String user = userField.getText();
-                Integer salary=spinner1.getValue();
+                Integer salary = spinner1.getValue();
                 String password = passwordField.getText();
                 String verfiedPassword = verifiedPasswordField.getText();
                 LocalDateTime createdOn = LocalDateTime.now();
@@ -150,11 +150,12 @@ public class SignUpManagers {
                     successAlert.showAndWait();
                     stage.setScene(new ManagerLoginView().showView(stage));
                     successAlert.close();
-                }else{
+                } else {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");
-                    errorAlert.setContentText("You have not inputted all the requirements correctly. "+"\n"+ "OR" +"\n"+
-                            "Your password doesnt match with verified password.");
+                    errorAlert.setContentText("You have not inputted all the requirements correctly. " + "\n" + "OR" + "\n" +
+                            "Your password doesnt match with verified password." + "\n" + "OR" + "\n" +
+                            "Password length should be bigger than 8!");
                     errorAlert.showAndWait();
                 }
 
@@ -165,11 +166,11 @@ public class SignUpManagers {
         BorderPane mainPane = new BorderPane();
         MenuBar menuBar = new MenuBar();
 
-        Label backLabel=new Label("Log-In Page");
+        Label backLabel = new Label("Log-In Page");
         backLabel.setStyle("-fx-font-weight: bold;");
-        Menu back=new Menu("", backLabel);
+        Menu back = new Menu("", backLabel);
 
-        backLabel.setOnMouseClicked(e->{
+        backLabel.setOnMouseClicked(e -> {
             stage.setScene(new ManagerLoginView().showView(stage));
         });
 

@@ -96,6 +96,7 @@ public class EmployeeFactory {
         if (password.equals(verifiedPassword) && password.length()>=8) {
             // the data are okay
             // create the user
+            // password length bigger than 8
             Employee employee = new Employee( firstName, lastName, dateOfBirth, email, phoneNumber, role
                     , user, password, salary, createdOn);
             //this.employees.add(employee);
