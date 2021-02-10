@@ -1,8 +1,6 @@
 package ManagerViews;
-
+import AdministratorViews.FindProductSupplier;
 import ComputerManagementFunctionFactory.SupplierFactory;
-import ComputerView.ComputerStockRegistrationView;
-import ManagerViews.ManagerHomeView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -18,10 +16,15 @@ import model.Computers;
 import model.Employee;
 import model.Supplier;
 
-public class FindSupplierManagerView {
+public class FindProductSupplierManagerView {
     private Employee currentUser;
+    private Computers currentBook;
 
-    public FindSupplierManagerView() {
+    public FindProductSupplierManagerView(Employee currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    public FindProductSupplierManagerView() {
     }
 
     public Scene execute(Stage stage) {
@@ -33,7 +36,7 @@ public class FindSupplierManagerView {
         root1.setPadding(new Insets(10, 10, 10, 10));
         root1.setAlignment(Pos.CENTER);
 
-        Label supplierNameLabel = new Label("Supplier Name: ");
+        Label supplierNameLabel = new Label("Product Name: ");
         supplierNameLabel.setTextFill(Color.web("black"));
         supplierNameLabel.setStyle("-fx-font-weight: bold;");
         TextField supplierNameField = new TextField();
@@ -54,11 +57,9 @@ public class FindSupplierManagerView {
             @Override
             public void handle(ActionEvent arg0) {
                 String supplierName = supplierNameField.getText();
-                //String description = descriptionArea.getText();
-                // boolean isRememberMe = remember.isSelected();
 
-                SupplierFactory supplierFactory = new SupplierFactory();
-                Supplier findSupplier = supplierFactory.findSupplierByName(supplierName);
+                SupplierFactory supplierFactory=new SupplierFactory();
+                Supplier findSupplier=supplierFactory.findProductByName(supplierName);
 
                 if (findSupplier == null) {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
@@ -67,7 +68,7 @@ public class FindSupplierManagerView {
                     errorAlert.showAndWait();
                 } else {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                    successAlert.setHeaderText("Supplier Found");
+                    successAlert.setHeaderText("Product Found");
                     successAlert.setContentText("The Credentials are okay");
                     successAlert.setContentText("ID: " + findSupplier.getSupplierID() + "\n"
                             + "Company Name: " + findSupplier.getSupplierCompanyName() + "\n"
@@ -100,16 +101,16 @@ public class FindSupplierManagerView {
         Label registerComputerLabel = new Label("Register Computer");
         Menu registerComputer = new Menu("", registerComputerLabel);
         registerComputerLabel.setOnMouseClicked(e -> {
-            ComputerStockRegistrationManagerView computerStockRegistrationView = new ComputerStockRegistrationManagerView();
-            stage.setScene(computerStockRegistrationView.execute(stage));
+            ComputerStockRegistrationManagerView computerStockRegistrationManagerView = new ComputerStockRegistrationManagerView();
+            stage.setScene(computerStockRegistrationManagerView.execute(stage));
         });
 
         menuBar.getMenus().add(registerComputer);
         mainPane.setTop(menuBar);
 
-        root1.setStyle("-fx-background-image: url('img_13.png')");
+        root1.setStyle("-fx-background-image: url('img_14.png')");
         mainPane.setCenter(root1);
-        Scene scene = new Scene(mainPane, 640, 960);
+        Scene scene = new Scene(mainPane, 960, 350);
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.setTitle("Find What Suppliers Offer");

@@ -144,6 +144,7 @@ public class AllClientManagerView {
         root.getChildren().addAll(table, save);
 
         Scene scene= new Scene(root, 450, 450);
+        stage.setTitle("All Clients");
         return scene;
 
 

@@ -55,6 +55,21 @@ public class SupplierFactory {
         return supplier;
     }
 
+    public Supplier findProductByName(String product) {
+
+        Query query = session.createQuery("select b from Supplier b where b.product=:product");
+        query.setParameter("product", product);
+        List<Supplier> suppliers = query.getResultList();
+
+        Supplier supplier = null;
+
+        if (!suppliers.isEmpty()) {
+            return suppliers.get(0);
+        }
+        session.close();
+        return supplier;
+    }
+
 
     public void createSuppliers(final Supplier supplier) {
 
@@ -102,6 +117,24 @@ public class SupplierFactory {
         Integer cartels = Math.toIntExact((Long) query.getSingleResult());
 
         return cartels;
+
+    }
+
+    public int getLastID() {
+
+        Query query = session.createQuery("select max(supplierID) from Supplier ");
+        Integer suppliers = Math.toIntExact((Integer) query.getSingleResult());
+
+        return suppliers;
+
+    }
+
+    public int getFirstID() {
+
+        Query query = session.createQuery("select min(supplierID) from Supplier ");
+        Integer employeeID = Math.toIntExact((Integer) query.getSingleResult());
+
+        return employeeID;
 
     }
 

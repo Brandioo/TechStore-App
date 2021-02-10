@@ -110,7 +110,7 @@ public class CashierLoginView {
         mainPane.setCenter(root);
         Scene scene = new Scene(mainPane, 1024, 682);
         scene.getStylesheets().add("style.css");
-        stage.setTitle("Log in");
+        stage.setTitle("Cashier Log In");
         return scene;
     }
 }

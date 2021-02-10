@@ -1,5 +1,6 @@
 package ManagerViews;
 
+import AdministratorViews.FindProductSupplier;
 import ClientView.ClientFindingManagerView;
 import ComputerManagementFunctionFactory.*;
 import javafx.event.ActionEvent;
@@ -176,7 +177,15 @@ public class ManagerHomeView {
             stage.setScene(new FindSupplierManagerView().execute(stage));
         });
 
-        findBookOrClient.getItems().addAll(findSuppliers);
+        MenuItem findProductsOfSuppliers = new MenuItem("-Find Product Offered By Suppliers-");
+        findProductsOfSuppliers.setStyle("-fx-font-weight: bold;");
+        findProductsOfSuppliers.setId("findProductsOfSuppliers-button");
+        findProductsOfSuppliers.setStyle("-fx-background-color:#01FFFF;");
+        findProductsOfSuppliers.setOnAction(e -> {
+            stage.setScene(new FindProductSupplierManagerView().execute(stage));
+        });
+
+        findBookOrClient.getItems().addAll(findSuppliers, findProductsOfSuppliers);
         mainPane.setTop(menuBar);
 
         MenuItem getVerificationStatus = new MenuItem("-Verification Status-");

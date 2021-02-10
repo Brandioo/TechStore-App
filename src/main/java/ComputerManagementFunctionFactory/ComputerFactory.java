@@ -83,6 +83,10 @@ public class ComputerFactory {
 
     }
 
+    public boolean createOfComputers(ComputerFactory computers){
+        return true;
+    }
+
     public void editComputers(Computers updatedComputer) {
 
         session = HibernateUtils.getSessionFactory().openSession();

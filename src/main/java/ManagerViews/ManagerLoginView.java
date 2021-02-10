@@ -122,7 +122,7 @@ public class ManagerLoginView {
         mainPane.setCenter(root);
         Scene scene = new Scene(mainPane, 991, 480);
         scene.getStylesheets().add("style.css");
-        stage.setTitle("Log in");
+        stage.setTitle("Manager Log In");
         return scene;
     }
 }

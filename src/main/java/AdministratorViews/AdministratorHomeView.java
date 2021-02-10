@@ -10,6 +10,7 @@ import ClientView.ClientFindingView;
 import EmployeesView.AllUsersView;
 import EmployeesView.FindEmployeeView;
 import ComputerManagementFunctionFactory.*;
+import ManagerViews.FindProductSupplierManagerView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -288,7 +289,15 @@ public class AdministratorHomeView {
             stage.setScene(new FindSupplierView().execute(stage));
         });
 
-        findBookOrClient.getItems().addAll(findSuppliers);
+        MenuItem findProductsOfSuppliers = new MenuItem("-Find Product Offered By Suppliers-");
+        findProductsOfSuppliers.setStyle("-fx-font-weight: bold;");
+        findProductsOfSuppliers.setId("findProductsOfSuppliers-button");
+        findProductsOfSuppliers.setStyle("-fx-background-color:#01FFFF;");
+        findProductsOfSuppliers.setOnAction(e -> {
+            stage.setScene(new FindProductSupplier().execute(stage));
+        });
+
+        findBookOrClient.getItems().addAll(findSuppliers, findProductsOfSuppliers);
         mainPane.setTop(menuBar);
 
         MenuItem countSalaries = new MenuItem("-Get Current Cost-");

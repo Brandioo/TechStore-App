@@ -1,5 +1,7 @@
 package ComputerView;
 
+import AdministratorViews.FindProductSupplier;
+import AdministratorViews.FindSupplierView;
 import ComputerManagementFunctionFactory.ComputerFactory;
 import ComputerManagementFunctionFactory.SupplierFactory;
 import javafx.event.ActionEvent;
@@ -49,12 +51,14 @@ public class ComputerStockRegistrationView {
         root1.add(isbnLabel, 1, 5);
         root1.add(isbnField, 4, 5);
 
+        SupplierFactory supplierFactory=new SupplierFactory();
+
         // Creates an integer spinner with 1 as min, 10 as max and 2 as initial value
         Spinner<Integer> spinner1 = new Spinner<>(1, 1000, 1);
 
         Spinner<Integer> spinner2 = new Spinner<>(1, 1000000, 1);
 
-        Spinner<Integer> spinner3 = new Spinner<>(1, 1000, 1);
+        Spinner<Integer> spinner3 = new Spinner<>(supplierFactory.getFirstID(), supplierFactory.getLastID(), supplierFactory.getFirstID());
 
         Label quantityLabel=new Label("Quantity:    ");
         quantityLabel.setTextFill(Color.WHITE);
@@ -120,8 +124,9 @@ public class ComputerStockRegistrationView {
                 computer.setSuppliers(supplierFactory.findSupplierByID(supplierID));
 
                 computerFactory.createComputers(computer);
+                boolean isRegistered=computerFactory.createOfComputers(computerFactory);
 
-                if (supplierID!=null) {
+                if (isRegistered) {
                     Employee currentEmployee=new Employee();
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The computer was registered successfully");
@@ -153,6 +158,40 @@ public class ComputerStockRegistrationView {
         menuBar.getMenus().add(back);
         mainPane.setTop(menuBar);
 
+        Label findSupplierIDLabel = new Label("Find Supplier ID");
+        Menu findSupplier = new Menu("", findSupplierIDLabel);
+        findSupplierIDLabel.setOnMouseClicked(e -> {
+            FindSupplierView findSupplierView = new FindSupplierView();
+            stage.setScene(findSupplierView.execute(stage));
+        });
+
+        menuBar.getMenus().add(findSupplier);
+        mainPane.setTop(menuBar);
+
+        Label findProductLabel = new Label("Find Product Offered By Suppliers");
+        Menu findProduct = new Menu("", findProductLabel);
+        findProductLabel.setOnMouseClicked(e -> {
+            FindProductSupplier findSupplierView = new FindProductSupplier();
+            stage.setScene(findSupplierView.execute(stage));
+        });
+
+        menuBar.getMenus().add(findProduct);
+        mainPane.setTop(menuBar);
+
+        Label getAllCartels = new Label("Last Cartel Number");
+        Menu getCartel = new Menu("", getAllCartels);
+        getAllCartels.setOnMouseClicked(e -> {
+                    SupplierFactory supplierFactory1 = new SupplierFactory();
+                    Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                    successAlert.setHeaderText("Last Supplier ID");
+                    successAlert.setContentText(String.valueOf(supplierFactory1.getLastID()));
+                    successAlert.showAndWait();
+                    System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+                });
+
+
+        menuBar.getMenus().add(getCartel);
+        mainPane.setTop(menuBar);
 
 
         root1.setStyle("-fx-background-image: url('img_9.png')");

@@ -1,6 +1,9 @@
 package ManagerViews;
 
 import AdministratorViews.AdministratorHomeView;
+import AdministratorViews.FindProductSupplier;
+import AdministratorViews.FindSupplierView;
+import CashierView.CashierHomeView;
 import ComputerManagementFunctionFactory.ComputerFactory;
 import ComputerManagementFunctionFactory.SupplierFactory;
 import ManagerViews.ManagerHomeView;
@@ -58,12 +61,14 @@ public class ComputerStockRegistrationManagerView {
         TextField supplierField = new TextField();
         root1.add(supplierField, 4, 7);
 
+        SupplierFactory supplierFactory=new SupplierFactory();
         // Creates an integer spinner with 1 as min, 10 as max and 2 as initial value
         Spinner<Integer> spinner1 = new Spinner<>(1, 1000, 1);
 
         Spinner<Integer> spinner2 = new Spinner<>(1, 1000, 1);
 
-        Spinner<Integer> spinner3 = new Spinner<>(1, 1000, 1);
+        Spinner<Integer> spinner3 = new Spinner<>(supplierFactory.getFirstID(), supplierFactory.getLastID(), supplierFactory.getFirstID());
+
 
 
 // Creates an integer spinner with 0 as min, 100 as max and 10 as initial
@@ -139,21 +144,21 @@ public class ComputerStockRegistrationManagerView {
                 computer.setSuppliers(supplierFactory.findSupplierByID(supplierID));
 
                 computerFactory.createComputers(computer);
+                boolean isRegistered=computerFactory.createOfComputers(computerFactory);
 
-                if (currentSupplier==null) {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                    errorAlert.setHeaderText("There was an error");
-                    errorAlert.setContentText("The registration was not done correctly");
-                    errorAlert.showAndWait();
-                } else {
+                if (isRegistered) {
                     Employee currentEmployee=new Employee();
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The computer was registered successfully");
                     successAlert.showAndWait();
                     stage.setScene(new ManagerHomeView(currentEmployee).execute(stage));
                     successAlert.close();
+                } else {
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setHeaderText("There was an error");
+                    errorAlert.setContentText("The registration was not done correctly");
+                    errorAlert.showAndWait();
                 }
-
             }
 
         });
@@ -172,7 +177,43 @@ public class ComputerStockRegistrationManagerView {
         menuBar.getMenus().add(back);
         mainPane.setTop(menuBar);
 
+        Label findSupplierIDLabel = new Label("Find Supplier ID");
+        Menu findSupplier = new Menu("", findSupplierIDLabel);
+        findSupplierIDLabel.setOnMouseClicked(e -> {
+            FindSupplierView findSupplierView = new FindSupplierView();
+            stage.setScene(findSupplierView.execute(stage));
+        });
 
+        menuBar.getMenus().add(findSupplier);
+        mainPane.setTop(menuBar);
+
+        Label findProductLabel = new Label("Find Product Offered By Suppliers");
+        Menu findProduct = new Menu("", findProductLabel);
+        findProductLabel.setOnMouseClicked(e -> {
+            FindProductSupplier findSupplierView = new FindProductSupplier();
+            stage.setScene(findSupplierView.execute(stage));
+        });
+
+        menuBar.getMenus().add(findProduct);
+        mainPane.setTop(menuBar);
+
+        Menu getAllCartels = new Menu("Last Cartel Number");
+        getAllCartels.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent arg0) {
+                SupplierFactory supplierFactory1 = new SupplierFactory();
+                Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                successAlert.setHeaderText("Last Supplier ID");
+                successAlert.setContentText(String.valueOf(supplierFactory1.getLastID()));
+                successAlert.showAndWait();
+                System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
+            }
+
+        });
+
+        menuBar.getMenus().add(getAllCartels);
+        mainPane.setTop(menuBar);
 
         root1.setStyle("-fx-background-image: url('img_9.png')");
         mainPane.setCenter(root1);

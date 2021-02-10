@@ -90,6 +90,7 @@ public class AllCartelRecordView {
         root.getChildren().addAll(table, save, buyBook, buyBookOnline);
 
         Scene scene= new Scene(root, 450, 450);
+        stage.setTitle("All Cartel-Records");
         return scene;
 
 

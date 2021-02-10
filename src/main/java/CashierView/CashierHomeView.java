@@ -1,5 +1,6 @@
 package CashierView;
 
+import AdministratorViews.AllSupplierView;
 import ClientView.ClientFindingViewCashier;
 import ComputerView.AllComputerView;
 import ComputerView.ComputerFindingView;
@@ -111,7 +112,7 @@ public class CashierHomeView {
         });
 
         userMenu.getItems().addAll(getAllClientTable,
-                getAllComputerTable, getAllCartels, getAllCartelRecord, getUser);
+                getAllComputerTable, getUser);
 
         Label logOutLabel = new Label("Log Out");
         Menu logout = new Menu("", logOutLabel);

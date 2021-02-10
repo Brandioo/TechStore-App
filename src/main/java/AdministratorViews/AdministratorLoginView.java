@@ -110,7 +110,7 @@ public class AdministratorLoginView {
         mainPane.setCenter(root);
         Scene scene = new Scene(mainPane, 1000, 667);
         scene.getStylesheets().add("style.css");
-        stage.setTitle("Log in");
+        stage.setTitle("Administrator Log In");
         return scene;
     }
 }

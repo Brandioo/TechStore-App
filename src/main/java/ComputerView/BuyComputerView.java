@@ -120,8 +120,8 @@ public class BuyComputerView {
         Label findComputersLabel = new Label("Find Computers");
         Menu findComputer = new Menu("", findComputersLabel);
         findComputersLabel.setOnMouseClicked(e -> {
-            ComputerFindingView bookFindingView = new ComputerFindingView(currentUser);
-            stage.setScene(bookFindingView.execute(stage));
+            ComputerFindingView computerFindingView = new ComputerFindingView(currentUser);
+            stage.setScene(computerFindingView.execute(stage));
         });
 
         menuBar.getMenus().add(findComputer);

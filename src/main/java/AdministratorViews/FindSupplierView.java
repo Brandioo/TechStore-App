@@ -4,6 +4,7 @@ import CashierView.CartelRegistrationCashierView;
 import CashierView.CashierHomeView;
 import ComputerManagementFunctionFactory.EmployeeFactory;
 import ComputerManagementFunctionFactory.SupplierFactory;
+import ComputerView.ComputerStockRegistrationView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -71,7 +72,7 @@ public class FindSupplierView {
                     errorAlert.showAndWait();
                 } else {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
-                    successAlert.setHeaderText("Employee Found");
+                    successAlert.setHeaderText("Supplier Found");
                     successAlert.setContentText("The Credentials are okay");
                     successAlert.setContentText("ID: " + findSupplier.getSupplierID() + "\n"
                             + "Company Name: " + findSupplier.getSupplierCompanyName() + "\n"
@@ -99,6 +100,16 @@ public class FindSupplierView {
         });
 
         menuBar.getMenus().add(back);
+        mainPane.setTop(menuBar);
+
+        Label registerComputerLabel = new Label("Register Computer");
+        Menu registerComputer = new Menu("", registerComputerLabel);
+        registerComputerLabel.setOnMouseClicked(e -> {
+            ComputerStockRegistrationView computerStockRegistrationView = new ComputerStockRegistrationView();
+            stage.setScene(computerStockRegistrationView.execute(stage));
+        });
+
+        menuBar.getMenus().add(registerComputer);
         mainPane.setTop(menuBar);
 
         root1.setStyle("-fx-background-image: url('img_13.png')");

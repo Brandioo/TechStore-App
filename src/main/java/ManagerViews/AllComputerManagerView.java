@@ -151,6 +151,7 @@ public class AllComputerManagerView {
         root.getChildren().addAll(table, save);
 
         Scene scene= new Scene(root, 450, 450);
+        stage.setTitle("All Computers");
         return scene;
 
 

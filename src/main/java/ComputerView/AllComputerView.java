@@ -166,6 +166,7 @@ public class AllComputerView {
         root.getChildren().addAll(table, save, buyBook, buyBookOnline);
 
         Scene scene= new Scene(root, 450, 450);
+        stage.setTitle("All Computers");
         return scene;
 
 
