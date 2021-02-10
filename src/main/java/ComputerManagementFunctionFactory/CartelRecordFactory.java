@@ -8,6 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtils;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class CartelRecordFactory {
@@ -23,6 +25,11 @@ public class CartelRecordFactory {
 
         transaction.commit();
     }
+
+    public boolean createOfCartelRecord(CartelRecordFactory cartelRecordFactory){
+        return true;
+    }
+
 
     public String findAllCartelRecord() {
         System.out.println("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_--_-_-_-_-");

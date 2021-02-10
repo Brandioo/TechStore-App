@@ -102,5 +102,13 @@ public class ComputerFactory {
         return session.find(Computers.class, Id);
     }
 
+    public int getLastID() {
 
+        Query query = session.createQuery("select max(computerID) from Computers ");
+        Integer computers = Math.toIntExact((Integer) query.getSingleResult());
+
+        session.close();
+        return computers;
+
+    }
 }

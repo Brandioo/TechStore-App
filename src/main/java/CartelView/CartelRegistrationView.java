@@ -41,9 +41,9 @@ public class CartelRegistrationView {
         root1.setAlignment(Pos.BOTTOM_CENTER);
 
         // Creates an integer spinner with 1 as min, 10 as max and 2 as initial value
-        Spinner<Integer> spinner1 = new Spinner<>(1, 1000, 2);
+        Spinner<Integer> spinner1 = new Spinner<>(1, 31, 10);
 
-        Spinner<Integer> spinner2 = new Spinner<>(1, 1000, 1);
+        Spinner<Integer> spinner2 = new Spinner<>(1, 1000, 7);
 
 
 // Creates an integer spinner with 0 as min, 100 as max and 10 as initial
@@ -99,12 +99,6 @@ public class CartelRegistrationView {
 
                 cartelFactory.createCartel(cartel);
 
-                if (currentComputer ==null) {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                    errorAlert.setHeaderText("There was an error");
-                    errorAlert.setContentText("Register Computer At Buy Book Section");
-                    errorAlert.showAndWait();
-                } else {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("The Cartel was registered successfully");
                     successAlert.showAndWait();
@@ -112,7 +106,7 @@ public class CartelRegistrationView {
                     successAlert.close();
 
                 }
-            }
+
 
         });
 

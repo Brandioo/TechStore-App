@@ -46,6 +46,9 @@ public class CartelRecordRegistrationView {
 
         Menu userMenu = new Menu("Cartel Control");
 
+        CartelFactory cartelFactory = new CartelFactory();
+        ComputerFactory computerFactory = new ComputerFactory();
+
         Spinner<Integer> spinner1 = new Spinner<>(1, 3000, 2021);
 
         Spinner<Integer> spinner2 = new Spinner<>(1, 12, 1);
@@ -56,9 +59,9 @@ public class CartelRecordRegistrationView {
 
         Spinner<Integer> spinner5 = new Spinner<>(1, 59, 0);
 
-        Spinner<Integer> spinner6 = new Spinner<>(1, 2000, 1);
+        Spinner<Integer> spinner6 = new Spinner<>(1, computerFactory.getLastID(), 5);
 
-        Spinner<Integer> spinner7 = new Spinner<>(1, 2000, 1);
+        Spinner<Integer> spinner7 = new Spinner<>(1, cartelFactory.getLastID(), 24);
 
         Label yearLabel = new Label("Return Year:");
         yearLabel.setTextFill(Color.DEEPSKYBLUE);
@@ -153,8 +156,9 @@ public class CartelRecordRegistrationView {
                 cartelRecord.setCreatedOn(createdOn);
 
                 cartelRecordFactory.createCartelRecord(cartelRecord);
+                boolean isRegistered=cartelRecordFactory.createOfCartelRecord(cartelRecordFactory);
 
-                if (cartelRecordFactory!=null) {
+                if (isRegistered) {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("Success");
                     successAlert.setContentText("The Cartel Record was registered successfully");
@@ -164,10 +168,8 @@ public class CartelRecordRegistrationView {
                 } else {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");
-                    errorAlert.setContentText("Register Computer With It's ID At Buy Computer Section! " + "\n"
-                            + "Register Cartel At Cartel Registration Section! ");
+                    errorAlert.setContentText("You have not inputted all the requirements correctly.");
                     errorAlert.showAndWait();
-
                 }
             }
 
@@ -217,7 +219,7 @@ public class CartelRecordRegistrationView {
         menuBar.getMenus().add(findComputer);
         mainPane.setTop(menuBar);
 
-        MenuItem getAllCartels = new MenuItem("-Get All Cartel Info-");
+        MenuItem getAllCartels = new MenuItem("-Last Cartel Number-");
         getAllCartels.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override

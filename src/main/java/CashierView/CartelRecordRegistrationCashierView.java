@@ -1,5 +1,6 @@
 package CashierView;
 
+import AdministratorViews.AdministratorHomeView;
 import ComputerManagementFunctionFactory.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -50,6 +51,9 @@ public class CartelRecordRegistrationCashierView {
 //        TextField priceField = new TextField();
 //        root1.add(priceField, 2, 8);
 
+        CartelFactory cartelFactory = new CartelFactory();
+        ComputerFactory computerFactory = new ComputerFactory();
+
         Spinner<Integer> spinner1 = new Spinner<>(1, 3000, 2021);
 
         Spinner<Integer> spinner2 = new Spinner<>(1, 12, 1);
@@ -60,9 +64,9 @@ public class CartelRecordRegistrationCashierView {
 
         Spinner<Integer> spinner5 = new Spinner<>(1, 59, 0);
 
-        Spinner<Integer> spinner6 = new Spinner<>(1, 2000, 1);
+        Spinner<Integer> spinner6 = new Spinner<>(1, computerFactory.getLastID(), 5);
 
-        Spinner<Integer> spinner7 = new Spinner<>(1, 2000, 1);
+        Spinner<Integer> spinner7 = new Spinner<>(1, cartelFactory.getLastID(), 24);
 
         Label yearLabel = new Label("Return Year:");
         yearLabel.setTextFill(Color.DEEPSKYBLUE);
@@ -100,11 +104,11 @@ public class CartelRecordRegistrationCashierView {
         root1.add(computerIDLabel, 1, 6);
         root1.add(spinner6, 2, 6);
 
-        Label clientID=new Label("Cartel ID (ID of Last Cartel): ");
+        Label clientID = new Label("Cartel ID (ID of Last Cartel): ");
         clientID.setTextFill(Color.DEEPSKYBLUE);
         clientID.setStyle("-fx-font-weight: bold;");
-        root1.add(clientID,1,7);
-        root1.add(spinner7,2,7);
+        root1.add(clientID, 1, 7);
+        root1.add(spinner7, 2, 7);
 
         Label createdOnLabel = new Label("Created On (Auto Calc Now): ");
         createdOnLabel.setTextFill(Color.DEEPSKYBLUE);
@@ -129,10 +133,9 @@ public class CartelRecordRegistrationCashierView {
                 //String description = descriptionArea.getText();
                 // boolean isRememberMe = remember.isSelected();
 
-                CartelFactory cartelFactory = new CartelFactory();
+
                 CartelRecordFactory cartelRecordFactory = new CartelRecordFactory();
                 ClientFactory clientFactory = new ClientFactory();
-                ComputerFactory bookFactory = new ComputerFactory();
                 EmployeeFactory employeeFactory = new EmployeeFactory();
                 CartelRecord cartelRecord = new CartelRecord();
 
@@ -148,7 +151,7 @@ public class CartelRecordRegistrationCashierView {
                 cartelRecord.setEndData(LocalDateTime.of(returnYear, returnMonth, returnDay, returnHour, returnMinute));
 
                 Integer computerID = spinner6.getValue();
-                cartelRecord.setComputers(bookFactory.findComputersByID(computerID));
+                cartelRecord.setComputers(computerFactory.findComputersByID(computerID));
 
                 Integer cartelID = spinner7.getValue();
                 cartelRecord.setCartel(cartelFactory.findCartelsByID(cartelID));
@@ -161,24 +164,23 @@ public class CartelRecordRegistrationCashierView {
                 cartelRecord.setCreatedOn(createdOn);
 
                 cartelRecordFactory.createCartelRecord(cartelRecord);
+                boolean isRegistered = cartelRecordFactory.createOfCartelRecord(cartelRecordFactory);
 
-                if (cartelRecordFactory!=null) {
-                    //Employee currentEmployee=new Employee();
+                if (isRegistered) {
                     Alert successAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     successAlert.setHeaderText("Success");
                     successAlert.setContentText("The Cartel Record was registered successfully");
                     successAlert.showAndWait();
-                    stage.setScene(new CashierHomeView(currentUser).execute(stage));
+                    stage.setScene(new AdministratorHomeView(currentUser).execute(stage));
                     successAlert.close();
-                } else {
+                }  else {
                     Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                     errorAlert.setHeaderText("There was an error");
-                    errorAlert.setContentText("Register Computer With It's ID At Buy Computer Section! " + "\n"
-                            + "Register Cartel At Cartel Registration Section! ");
+                    errorAlert.setContentText("You have not inputted all the requirements correctly.");
                     errorAlert.showAndWait();
-
                 }
             }
+
 
         });
 
@@ -229,7 +231,7 @@ public class CartelRecordRegistrationCashierView {
         menuBar.getMenus().add(findComputer);
         mainPane.setTop(menuBar);
 
-        MenuItem getAllCartels = new MenuItem("-Get All Cartel Info-");
+        MenuItem getAllCartels = new MenuItem("-Last Cartel Number-");
         getAllCartels.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
