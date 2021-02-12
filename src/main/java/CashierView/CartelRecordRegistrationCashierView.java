@@ -64,9 +64,10 @@ public class CartelRecordRegistrationCashierView {
 
         Spinner<Integer> spinner5 = new Spinner<>(1, 59, 0);
 
-        Spinner<Integer> spinner6 = new Spinner<>(1, computerFactory.getLastID(), 1);
+        Spinner<Integer> spinner6 = new Spinner<>(computerFactory.getFirstID(), computerFactory.getLastID(), computerFactory.getFirstID());
 
-        Spinner<Integer> spinner7 = new Spinner<>(1, cartelFactory.getLastID(), 1);
+        Spinner<Integer> spinner7 = new Spinner<>(cartelFactory.getFirstID(), cartelFactory.getLastID(), cartelFactory.getFirstID());
+
 
         Label yearLabel = new Label("Return Year:");
         yearLabel.setTextFill(Color.DEEPSKYBLUE);

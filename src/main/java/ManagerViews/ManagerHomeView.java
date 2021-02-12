@@ -245,7 +245,7 @@ public class ManagerHomeView {
         root1.setStyle("-fx-background-image: url('img_5.png')");
         Scene sc = new Scene(mainPane, 650, 978);
         sc.getStylesheets().add("style.css");
-        stage.setTitle("Home");
+        stage.setTitle("Manager Home");
 
         return sc;
     }

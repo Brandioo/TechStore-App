@@ -218,7 +218,7 @@ public class CashierHomeView {
         root1.setStyle("-fx-background-image: url('img_6.png')");
         Scene sc = new Scene(mainPane, 650, 974);
         sc.getStylesheets().add("style.css");
-        stage.setTitle("Home");
+        stage.setTitle("Cashier Home");
 
         return sc;
     }

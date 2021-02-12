@@ -383,7 +383,7 @@ public class AdministratorHomeView {
         root1.setStyle("-fx-background-image: url('img_1.png')");
         Scene sc = new Scene(mainPane, 626, 417);
         sc.getStylesheets().add("style.css");
-        stage.setTitle("Home");
+        stage.setTitle("Administrator Home");
 
         return sc;
     }
